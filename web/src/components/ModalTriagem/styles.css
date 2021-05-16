@@ -1,0 +1,143 @@
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(242, 243, 245, 0.8);
+
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+  z-index: 20;
+}
+
+.container-modal {
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; */
+
+  width: 526px;
+  height: 634px;
+
+  background: #fff;
+
+  border-radius: 5px;
+}
+
+.container-modal header {
+  width: 100%;
+  background: #2d9cdb;
+  padding: 10px 0px 10px 33px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.24);
+  /* z-index: 10; */
+  border-radius: 5px 5px 0px 0px;
+}
+
+.container-modal header h1 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 32px;
+  line-height: 42px;
+
+  color: #ffffff;
+}
+
+.container-modal p {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+
+  color: #878686;
+}
+
+.container-modal .description {
+  margin: 30px 0px 0px 42px;
+}
+
+.state p {
+  margin: 30px 0px 0px 42px;
+}
+
+.chip-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 60px;
+  margin-top: 30px;
+}
+
+.position {
+  margin: 30px 0px 0px 42px;
+}
+
+.position p {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  margin: 20px 0px;
+}
+
+.recommendation {
+  width: 443px;
+  height: 200px;
+
+  background: #fff;
+  margin: 40px auto;
+
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  box-shadow: 0px 15px 12px rgba(0, 0, 0, 0.22), 0px 19px 38px rgba(0, 0, 0, 0.3);
+
+}
+
+.recommendation-content{
+  padding: 30px 20px 0px 20px;
+}
+.recommendation-content h3 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 21px;
+  margin-bottom: 10px;
+
+  color: #000;
+}
+
+.recommendation-content p {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+
+.buttons-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+}
+
+.buttons-container a {
+  text-decoration: none;
+
+}

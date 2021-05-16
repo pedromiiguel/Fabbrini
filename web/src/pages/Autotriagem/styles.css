@@ -1,0 +1,64 @@
+.page-autotriagem {
+  width: 100vw;
+  height: 100vh;
+  background-color: #f2f2f2;
+  font-family: Roboto;
+  height: 115vh;
+
+}
+
+.page-autotriagem-content {
+  margin-left: 48px;
+}
+
+.page-autotriagem-content h1 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 35px;
+
+  color: #000000;
+
+  margin: 20px 0;
+
+}
+
+.page-autotriagem-content p {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+
+  color: #878686;
+
+
+}
+
+.page-autotriagem-content .description-autotriagem {
+  
+  margin-bottom: 20px;
+}
+
+.page-autotriagem-content .form-triagem {
+  width: 90%;
+  height: 500px;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  box-sizing: border-box;
+  border-radius: 12px;
+  margin: 0;
+  flex-wrap: nowrap;
+}
+
+.form-triagem .login-phases {
+  width: 100%;
+  /* border-bottom: 1px solid #e0e0e0 ; */
+  
+  display: flex;
+  justify-content: space-around;
+  padding-top: 30px;
+
+}
+
