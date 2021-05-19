@@ -4,12 +4,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
-import FormLabel from '@material-ui/core/FormLabel';
+// import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
 
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
+// import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
+import api from '../../services/api';
+
 
 const useStyles = makeStyles((theme) => ({
   instructions: {
@@ -63,12 +65,12 @@ const BlueCheckbox = withStyles({
 })((props) => <Checkbox color="default" {...props} />);
 
 function StepIdentification({ handleNext, handleBack }) {
-  const [reason, setReason] = useState({
+  const [symptom, setSymptom] = useState({
     percaConciencia: false,
     dorPeito: false,
     dorAbdomen: false,
     faltaAr: false,
-    percaForça: false,
+    percaForca: false,
     reacaoAlergica: false,
     trauma: false,
     dorAnalgesico: false,
@@ -77,7 +79,7 @@ function StepIdentification({ handleNext, handleBack }) {
 
 
   const handleChange = (event) => {
-    setReason({ ...reason, [event.target.name]: event.target.checked });
+    setSymptom({ ...symptom, [event.target.name]: event.target.checked });
   };
 
   const {
@@ -85,12 +87,12 @@ function StepIdentification({ handleNext, handleBack }) {
     dorPeito,
     dorAbdomen,
     faltaAr,
-    percaForça,
+    percaForca,
     reacaoAlergica,
     trauma,
     dorAnalgesico,
     outrosMotivos,
-  } = reason;
+  } = symptom;
 
   const classes = useStyles();
 
@@ -101,14 +103,16 @@ function StepIdentification({ handleNext, handleBack }) {
   function handleSubmit(event) {
     event.preventDefault();
 
-    // const data = {
-    //   sexo,
-    //   idade,
-    //   peso,
-    //   altura,
-    // };
+    const data = {
+      ...symptom
+    };
 
-    console.log(reason);
+    console.log(symptom);
+
+    // api.post('sympton', data).then(() => {
+    //       alert('Realizado com sucesso!');
+    //     })
+    //     .catch((err) => console.log(err));
 
     handleNext();
     
@@ -170,9 +174,9 @@ function StepIdentification({ handleNext, handleBack }) {
           <FormControlLabel
             control={
               <BlueCheckbox
-                checked={percaForça}
+                checked={percaForca}
                 onChange={handleChange}
-                name="percaForça"
+                name="percaForca"
               />
             }
             label="Perda de força / dificuldade de falar / perda de sensibilidade / formigamento:"

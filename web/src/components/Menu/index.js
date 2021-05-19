@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 
 import Button from '@material-ui/core/Button';
-import logo from '../../image/logo.svg';
+import logo from '../../assets/images/logo.svg';
 
 const useStyles = makeStyles((theme) => ({
   buttonLogin: {

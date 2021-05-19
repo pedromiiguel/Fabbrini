@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
-const ReasonSchema = new mongoose.Schema({
+const SymptomSchema = new mongoose.Schema({
   percaConciencia: Boolean,
   dorPeito: Boolean,
   dorAbdomen: Boolean,
   faltaAr: Boolean,
-  percaForça: Boolean,
+  percaForca: Boolean,
   reacaoAlergica: Boolean,
   trauma: Boolean,
   dorAnalgesico: Boolean,
@@ -20,4 +20,4 @@ const ReasonSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('Reason', ReasonSchema);
+module.exports = mongoose.model('Symptom', SymptomSchema);

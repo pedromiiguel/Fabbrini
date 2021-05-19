@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import { ThemeProvider } from '@material-ui/core/';
 
 import StepIdentification from '../StepIdentification';
-import StepReason from '../StepReason';
+import StepSymptom from '../StepSymptom';
 import StepHealth from '../StepHealth';
 import StepComplementaryData from '../StepComplementaryData';
 
@@ -78,7 +78,7 @@ export default function HorizontalLabelPositionBelowStepper() {
           <StepIdentification handleNext={handleNext} handleBack={handleBack} />
         );
       case 1:
-        return <StepReason handleNext={handleNext} handleBack={handleBack} />;
+        return <StepSymptom handleNext={handleNext} handleBack={handleBack} />;
       case 2:
         return <StepHealth handleNext={handleNext} />;
       case 3:

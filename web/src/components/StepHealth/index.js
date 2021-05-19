@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
+// import TextField from '@material-ui/core/TextField';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
+// import FormLabel from '@material-ui/core/FormLabel';
 
 import { withStyles } from '@material-ui/core/styles';
-import { DataUsageSharp } from '@material-ui/icons';
+// import { DataUsageSharp } from '@material-ui/icons';
+import api from '../../services/api'
 
 const useStyles = makeStyles((theme) => ({
   instructions: {
@@ -83,21 +84,17 @@ function StepIdentification({ handleNext }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    const {
-      questionOne,
-      questionTwo,
-      questionThree,
-      questionFour,
-    } = specification;
+   
 
     const data = {
-      questionOne,
-      questionTwo,
-      questionThree,
-      questionFour,
+      ...specification
     };
 
     console.log(data);
+
+    // api.post('health', data).then(() =>{
+    //   alert('realizado com sucesso!')
+    // }).catch((err) => {console.log(err)})
     handleNext();
   }
   return (

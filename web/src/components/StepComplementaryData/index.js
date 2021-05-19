@@ -5,9 +5,9 @@ import TextField from '@material-ui/core/TextField';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import Radio from '@material-ui/core/Radio';
-
 import { withStyles } from '@material-ui/core/styles';
 import ModalTriagem from '../ModalTriagem';
+import api from '../../services/api';
 
 const useStyles = makeStyles((theme) => ({
   instructions: {
@@ -82,38 +82,50 @@ const StyledRadio = withStyles({
 
 function StepIdentification({ handleNext }) {
   const classes = useStyles();
-  const [specification, setSpecification] = useState({
-    questionOne: '',
-    questionTwo: '',
-    questionThree: '',
-    questionFour: '',
+  const [complementaryData, setComplementaryData] = useState({
+    peso: '',
+    altura: '',
+    frequenciaCardiaca: '',
+    frequenciaRespiratoria: '',
+    pressaoArterial: '',
+    oximetria: '',
+    email: '',
+    senha: '',
   });
 
   const [isModalTriagem, setIsModalTriagem] = useState(false);
 
-  // function closeModalTriagem() {
-  //   setIsModalTriagem(false)
-  // }
+  function closeModalTriagem() {
+    setIsModalTriagem(false);
+  }
 
   function handleSubmit(event) {
     event.preventDefault();
     // const {
-    //   questionOne,
-    //   questionTwo,
-    //   questionThree,
-    //   questionFour,
-    // } = specification;
+    //   peso,
+    //   altura,
+    //   frequenciaCardiaca,
+    //   frequenciaRespiratoria,
+    //   pressaoArterial,
+    //   oximetria,
+    //   email,
+    //   senha,
+    // } = complementaryData;
 
-    // const data = {
-    //   questionOne,
-    //   questionTwo,
-    //   questionThree,
-    //   questionFour,
-    // };
+    const data = {
+      ...complementaryData,
+    };
 
-    // console.log(data);
+    console.log(complementaryData);
+    api
+      .post('complementaryData', data)
+      .then(() => {
+        alert('cadastro finalizado');
+      })
+      .catch((err) => {
+        alert(err);
+      });
     // handleNext();
-    console.log('ok');
     setIsModalTriagem(true);
   }
   return (
@@ -134,50 +146,65 @@ function StepIdentification({ handleNext }) {
               label="Peso"
               type="text"
               variant="outlined"
-              // value={name}
-              // onChange={(event) => {
-              //   setName(event.target.value);
-              // }}
+              value={complementaryData.peso}
+              onChange={(event) => {
+                setComplementaryData({
+                  ...complementaryData,
+                  peso: event.target.value,
+                });
+              }}
             />
             <TextField
               id="outlined-basic"
               label="Altura"
               type="text"
               variant="outlined"
-              // value={name}
-              // onChange={(event) => {
-              //   setName(event.target.value);
-              // }}
+              value={complementaryData.altura}
+              onChange={(event) => {
+                setComplementaryData({
+                  ...complementaryData,
+                  altura: event.target.value,
+                });
+              }}
             />
             <TextField
               id="outlined-basic"
               label="Frequência Cardíaca"
               type="text"
               variant="outlined"
-              // value={name}
-              // onChange={(event) => {
-              //   setName(event.target.value);
-              // }}
+              value={complementaryData.frequenciaCardiaca}
+              onChange={(event) => {
+                setComplementaryData({
+                  ...complementaryData,
+                  frequenciaCardiaca: event.target.value,
+                });
+              }}
             />
             <TextField
               id="outlined-basic"
               label="Frequência Respiratória"
               type="text"
               variant="outlined"
-              // value={name}
-              // onChange={(event) => {
-              //   setName(event.target.value);
-              // }}
+              value={complementaryData.frequenciaRespiratoria}
+              onChange={(event) => {
+                setComplementaryData({
+                  ...complementaryData,
+                  frequenciaRespiratoria: event.target.value,
+                });
+              }}
             />
             <TextField
               id="outlined-basic"
               label="Pressão Arterial"
               type="text"
               variant="outlined"
-              // value={name}
-              // onChange={(event) => {
-              //   setName(event.target.value);
-              // }}
+              value={complementaryData.pressaoArterial}
+              onChange={(event) => {
+                setComplementaryData({
+                  ...complementaryData,
+                  pressaoArterial: event.target.value,
+                });
+              }}
             />
 
             <TextField
@@ -185,30 +212,39 @@ function StepIdentification({ handleNext }) {
               label="Oximetria"
               type="text"
               variant="outlined"
-              // value={name}
-              // onChange={(event) => {
-              //   setName(event.target.value);
-              // }}
+              value={complementaryData.oximetria}
+              onChange={(event) => {
+                setComplementaryData({
+                  ...complementaryData,
+                  oximetria: event.target.value,
+                });
+              }}
             />
             <TextField
               id="outlined-basic"
               label="Email"
               type="text"
               variant="outlined"
-              // value={name}
-              // onChange={(event) => {
-              //   setName(event.target.value);
-              // }}
+              value={complementaryData.email}
+              onChange={(event) => {
+                setComplementaryData({
+                  ...complementaryData,
+                  email: event.target.value,
+                });
+              }}
             />
             <TextField
               id="outlined-basic"
               label="Senha"
               type="text"
               variant="outlined"
-              // value={name}
-              // onChange={(event) => {
-              //   setName(event.target.value);
-              // }}
+              value={complementaryData.senha}
+              onChange={(event) => {
+                setComplementaryData({
+                  ...complementaryData,
+                  senha: event.target.value,
+                });
+              }}
             />
           </div>
 
