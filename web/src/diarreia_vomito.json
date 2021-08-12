@@ -1,0 +1,35 @@
+{
+  "disease" : "Diarréia e/ou Vômitos",
+    "red": [
+      "Obstrução das vias áreas",
+      "Respiração inadequada",
+      "Choque",
+      "Criança não reativa"
+    ],
+    "orange": [
+      "Alteração súbita da consciência",
+
+      "Criança não reage aos pais",
+      "História respiratória significativa",
+      "Evacuação de sangue vivo ou escurecido",
+      "Vômito de sangue",
+      "Prostração, hipotonia",
+      "Criança quente",
+      "Adulto muito quente",
+      "Dor intensa"
+    ],
+    "yellow": [
+      "Fezes pretas ou em groselha",
+      "História aguda de vômito de sangue",
+      "Sinais de desidratação",
+      "Vômitos persistentes",
+      "Adulto quente",
+      "Dor moderada"
+    ],
+    "green": [
+      "Febril",
+      "Vômito",
+      "Dor leve recente",
+      "Evento recente"
+    ]
+}

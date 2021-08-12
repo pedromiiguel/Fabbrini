@@ -1,14 +1,20 @@
 .page-autotriagem {
   width: 100vw;
-  height: 100vh;
+  /* height: 100vh; */
   background-color: #f2f2f2;
   font-family: Roboto;
-  height: 115vh;
-
+  /* height: 200vh; */
+  padding-bottom: 64px;
 }
 
 .page-autotriagem-content {
-  margin-left: 48px;
+  width: 100%;
+  height: 100%;
+
+}
+
+.page-autotriagem-info {
+  padding-left: 32px;
 }
 
 .page-autotriagem-content h1 {
@@ -37,25 +43,25 @@
 }
 
 .page-autotriagem-content .description-autotriagem {
-  
+
   margin-bottom: 20px;
 }
 
 .page-autotriagem-content .form-triagem {
-  width: 90%;
-  height: 500px;
+  max-width: 1200px;
+  width: 100%;
+  height: 600px;
   background-color: #fff;
   border: 1px solid #e0e0e0;
-  box-sizing: border-box;
   border-radius: 12px;
-  margin: 0;
-  flex-wrap: nowrap;
+  margin: 0 auto;
+
 }
 
 .form-triagem .login-phases {
   width: 100%;
   /* border-bottom: 1px solid #e0e0e0 ; */
-  
+
   display: flex;
   justify-content: space-around;
   padding-top: 30px;

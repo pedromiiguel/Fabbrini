@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/core/styles';
-import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
-// import FormLabel from '@material-ui/core/FormLabel';
-import FormControl from '@material-ui/core/FormControl';
-
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-// import FormHelperText from '@material-ui/core/FormHelperText';
-import Checkbox from '@material-ui/core/Checkbox';
-import api from '../../services/api';
-
+import {
+  Box,
+  Button,
+  FormControl,
+  FormControlLabel,
+  Radio,
+  RadioGroup,
+} from '@material-ui/core';
+import { SymptonContext } from '../../context/SymptonContext';
 
 const useStyles = makeStyles((theme) => ({
   instructions: {
@@ -26,9 +25,9 @@ const useStyles = makeStyles((theme) => ({
   },
   stepOne: {
     width: '100%',
-    height: '280px',
-    paddingBottom: '60px',
+    height: '300px',
     writingMode: 'horizontal-tb',
+    // backgroundColor: 'yellow',
   },
   textBold: {
     fontWeight: 'bold',
@@ -36,210 +35,151 @@ const useStyles = makeStyles((theme) => ({
   },
   formControl: {
     width: '100%',
-    paddingLeft: '26px',
+    padding: '16px'
+  },
+  radioGroup: {
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    marginTop: '20px',
+    gridTemplateColumns: '1fr 1fr 1fr',
+    gridTemplateRows: '1fr 1fr 1fr 1fr 1fr 1fr 1fr',
+    width: '100%',
+    // marginTop: '50px',
+    // paddingLeft: '26px',
   },
   buttonsContainer: {
     display: 'flex',
     justifyContent: 'flex-end',
     width: '100%',
+    // backgroundColor: 'blue',
     borderTop: '1px solid #E0E0E0',
     marginTop: '20px',
   },
   buttons: {
-    padding: '20px'
+    padding: '20px',
   },
 }));
 
-const BlueCheckbox = withStyles({
-  root: {
-    color: '#2196F3',
-    margin: 0,
-    '&$checked': {
-      color: '#2196F3',
-    },
-  },
-  checked: {},
-})((props) => <Checkbox color="default" {...props} />);
-
-function StepIdentification({ handleNext, handleBack }) {
-  const [symptom, setSymptom] = useState({
-    percaConciencia: false,
-    dorPeito: false,
-    dorAbdomen: false,
-    faltaAr: false,
-    percaForca: false,
-    reacaoAlergica: false,
-    trauma: false,
-    dorAnalgesico: false,
-    outrosMotivos: false,
-  });
-
-
-  const handleChange = (event) => {
-    setSymptom({ ...symptom, [event.target.name]: event.target.checked });
-  };
-
-  const {
-    percaConciencia,
-    dorPeito,
-    dorAbdomen,
-    faltaAr,
-    percaForca,
-    reacaoAlergica,
-    trauma,
-    dorAnalgesico,
-    outrosMotivos,
-  } = symptom;
+function StepIdentification() {
+  const { handleBack, handleSubmit, handleChange } = useContext(SymptonContext);
 
   const classes = useStyles();
 
-  function backStep() {
-    handleBack();
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-
-    const data = {
-      ...symptom
-    };
-
-    console.log(symptom);
-
-    // api.post('sympton', data).then(() => {
-    //       alert('Realizado com sucesso!');
-    //     })
-    //     .catch((err) => console.log(err));
-
-    handleNext();
-    
-  }
+  const StyledRadio = withStyles({
+    root: {
+      color: '#2196F3',
+      margin: 0,
+      '&$checked': {
+        color: '#2196F3',
+      },
+    },
+    checked: {},
+  })((props) => <Radio color="default" {...props} />);
 
   return (
-    <Box className={classes.stepOne}>
+    <Box>
       <Typography className={classes.instructions}>
         <span className={classes.textBold}>ATENÇÃO:</span> Leia TODOS os itens
         abaixo e indique qual mais se aproxima no motivo da consulta:
       </Typography>
       <form
+        id="formSymptom"
         noValidate
         autoComplete="off"
-        className={classes.formContainer}
+        className={classes.stepOne}
         onSubmit={handleSubmit}
       >
         <FormControl component="fieldset" className={classes.formControl}>
-          <FormControlLabel
-            control={
-              <BlueCheckbox
-                checked={percaConciencia}
-                onChange={handleChange}
-                name="percaConciencia"
-              />
-            }
-            label="Perda da Conciência"
-          />
-          <FormControlLabel
-            control={
-              <BlueCheckbox
-                checked={dorPeito}
-                onChange={handleChange}
-                name="dorPeito"
-              />
-            }
-            label="Dor no peito / tórax:"
-          />
-          <FormControlLabel
-            control={
-              <BlueCheckbox
-                checked={dorAbdomen}
-                onChange={handleChange}
-                name="dorAbdomen"
-              />
-            }
-            label="Dor na abdomem (barriga):"
-          />
-          <FormControlLabel
-            control={
-              <BlueCheckbox
-                checked={faltaAr}
-                onChange={handleChange}
-                name="faltaAr"
-              />
-            }
-            label="Falta de ar:"
-          />
-          <FormControlLabel
-            control={
-              <BlueCheckbox
-                checked={percaForca}
-                onChange={handleChange}
-                name="percaForca"
-              />
-            }
-            label="Perda de força / dificuldade de falar / perda de sensibilidade / formigamento:"
-          />
-          <FormControlLabel
-            control={
-              <BlueCheckbox
-                checked={reacaoAlergica}
-                onChange={handleChange}
-                name="reacaoAlergica"
-              />
-            }
-            label="Reação alérgica:"
-          />
-          <FormControlLabel
-            control={
-              <BlueCheckbox
-                checked={trauma}
-                onChange={handleChange}
-                name="trauma"
-              />
-            }
-            label="Trauma / Hemorragia:"
-          />
-          <FormControlLabel
-            control={
-              <BlueCheckbox
-                onChange={handleChange}
-                checked={dorAnalgesico}
-                name="dorAnalgesico"
-              />
-            }
-            label="Outra dor que não foi controlada com analgésico:"
-          />
-          <FormControlLabel
-            control={
-              <BlueCheckbox
-                checked={outrosMotivos}
-                onChange={handleChange}
-                name="outrosMotivos"
-              />
-            }
-            label="Outros motivos:"
-          />
-          {/* <FormHelperText>Be careful</FormHelperText> */}
+          <RadioGroup
+            aria-label="gender"
+            name="customized-radios"
+            onChange={handleChange}
+            className={classes.radioGroup}
+          >
+            <FormControlLabel
+              control={<StyledRadio value="Agressão" />}
+              label="Agressão"
+            />
+            <FormControlLabel
+              control={<StyledRadio value="Asma" />}
+              label="Asma"
+            />
+            <FormControlLabel
+              control={<StyledRadio value="Bebê chorando" />}
+              label="Bebê chorando"
+            />
+            <FormControlLabel
+              control={<StyledRadio value="Diabetes" />}
+              label="Diabetes"
+            />
+            <FormControlLabel
+              control={<StyledRadio value="Diarreia e/ou Vômitos" />}
+              label="Diarreia e/ou Vômitos"
+            />
+            <FormControlLabel
+              control={<StyledRadio value="Doença sexualmente transmissível" />}
+              label="Doença sexualmente transmissível"
+            />
+            <FormControlLabel
+              control={<StyledRadio value="Dor de garganta" />}
+              label="Dor de garganta"
+            />
+            <FormControlLabel
+              control={<StyledRadio value="Sim" />}
+              label="Bebê chorando"
+            />
+            <FormControlLabel
+              control={<StyledRadio value="Sim" />}
+              label="Bebê chorando"
+            />
+            <FormControlLabel
+              control={<StyledRadio value="Sim" />}
+              label="Bebê chorando"
+            />
+            <FormControlLabel
+              control={<StyledRadio value="Sim" />}
+              label="Bebê chorando"
+            />
+            <FormControlLabel
+              control={<StyledRadio value="Sim" />}
+              label="Bebê chorando"
+            />
+            <FormControlLabel
+                control={<StyledRadio value="Sim" />}
+                label="Bebê chorando"
+              /><FormControlLabel
+              control={<StyledRadio value="Sim" />}
+              label="Bebê chorando"
+            /><FormControlLabel
+            control={<StyledRadio value="Sim" />}
+            label="Bebê chorando"
+          /><FormControlLabel
+          control={<StyledRadio value="Sim" />}
+          label="Bebê chorando"
+        />
+        <FormControlLabel
+                control={<StyledRadio value="Sim" />}
+                label="Bebê chorando"
+              /><FormControlLabel
+              control={<StyledRadio value="Sim" />}
+              label="Bebê chorando"
+            />
+          </RadioGroup>
         </FormControl>
-        <div className={classes.buttonsContainer}>
-          <div className={classes.buttons}>
-            <Button
-              onClick={backStep}
-            >Back</Button>
-            <Button
-              variant="contained"
-              color="primary"
-              size="large"
-              id="finishButton"
-              type="submit"
-            >
-              Próximo
-            </Button>
-          </div>
-        </div>
       </form>
+      <div className={classes.buttonsContainer}>
+        <div className={classes.buttons}>
+          <Button onClick={handleBack}>Back</Button>
+          <Button
+            form="formSymptom"
+            variant="contained"
+            color="primary"
+            size="large"
+            id="finishButton"
+            type="submit"
+          >
+            Próximo
+          </Button>
+        </div>
+      </div>
     </Box>
   );
 }

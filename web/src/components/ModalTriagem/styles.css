@@ -27,7 +27,7 @@
   flex-direction: column; */
 
   width: 526px;
-  height: 634px;
+  height: 600px;
 
   background: #fff;
 
@@ -137,7 +137,21 @@
   gap: 20px;
 }
 
+.chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 500;
+  width: 200px;
+  height: 40px;
+  border-radius: 70px;
+}
+
+
 .buttons-container a {
   text-decoration: none;
+  color: #d32f2f;
+  font-weight: bold
 
 }

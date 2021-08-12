@@ -11,13 +11,16 @@ function Autotriagem() {
 
 
   return (
-    <div className="page-autotriagem">  
+    <div className="page-autotriagem">
       <Menu />
       <main className="page-autotriagem-content">
+        <div className="page-autotriagem-info">
         <h1>Autotriagem</h1>
         <p className="description-autotriagem">Forneça as informações abaixo de acordo com o que está sentindo.</p>
+        </div>
 
-        <div className="form-triagem">
+
+        <div className="form-triagem" >
             <Steeper/>
         </div>
       </main>

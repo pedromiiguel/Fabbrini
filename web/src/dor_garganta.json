@@ -1,0 +1,27 @@
+{
+  "disease" : "Dor de garganta",
+    "red": [
+      "Obstrução das vias áreas",
+      "Respiração inadequada",
+      "Estridor",
+      "Baba-se",
+      "Choque"
+    ],
+    "orange": [
+      "Alteração súbita da consciência",
+      "Adulto muito quente",
+      "Criança quente",
+      "Dor moderada"
+    ],
+    "yellow": [
+      "História de viagem recente",
+      "Início súbito",
+      "Adulto quente",
+      "Dor moderada"
+    ],
+    "green": [
+      "Febril",
+      "Dor leve recente",
+      "Evento recente"
+    ]
+}

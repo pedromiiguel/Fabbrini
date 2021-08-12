@@ -91,27 +91,13 @@ function StepIdentification({ handleNext }) {
     oximetria: '',
     email: '',
     senha: '',
+    idade: '',
+    doencasExistentes: '',
   });
 
-  const [isModalTriagem, setIsModalTriagem] = useState(false);
-
-  function closeModalTriagem() {
-    setIsModalTriagem(false);
-  }
 
   function handleSubmit(event) {
     event.preventDefault();
-    // const {
-    //   peso,
-    //   altura,
-    //   frequenciaCardiaca,
-    //   frequenciaRespiratoria,
-    //   pressaoArterial,
-    //   oximetria,
-    //   email,
-    //   senha,
-    // } = complementaryData;
-
     const data = {
       ...complementaryData,
     };
@@ -126,7 +112,7 @@ function StepIdentification({ handleNext }) {
         alert(err);
       });
     // handleNext();
-    setIsModalTriagem(true);
+    // setIsModalTriagem(true);
   }
   return (
     <>
@@ -222,27 +208,27 @@ function StepIdentification({ handleNext }) {
             />
             <TextField
               id="outlined-basic"
-              label="Email"
-              type="text"
+              label="Idade"
+              type="number"
               variant="outlined"
-              value={complementaryData.email}
+              value={complementaryData.idade}
               onChange={(event) => {
                 setComplementaryData({
                   ...complementaryData,
-                  email: event.target.value,
+                  idade: event.target.value,
                 });
               }}
             />
             <TextField
               id="outlined-basic"
-              label="Senha"
+              label="Doença pré existente"
               type="text"
               variant="outlined"
-              value={complementaryData.senha}
+              value={complementaryData.doencasExistentes}
               onChange={(event) => {
                 setComplementaryData({
                   ...complementaryData,
-                  senha: event.target.value,
+                  doencasExistentes: event.target.value,
                 });
               }}
             />
@@ -265,7 +251,6 @@ function StepIdentification({ handleNext }) {
           </div>
         </form>
       </Box>
-      {isModalTriagem && <ModalTriagem />}
     </>
   );
 }

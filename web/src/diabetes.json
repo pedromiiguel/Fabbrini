@@ -1,0 +1,30 @@
+{
+  "disease" : "Diabetes",
+    "red": [
+      "Obstrução das vias áreas",
+      "Respiração inadequada",
+      "Choque",
+      "Criança não reativa",
+      "Hipoglicemia"
+    ],
+    "orange": [
+      "Alteração súbita da consciência",
+      "Hiperglicemia com cetose",
+      "Criança quente",
+      "Adulto muito quente",
+      "Hipotermia",
+      "Dor intensa"
+    ],
+    "yellow": [
+      "Hiperglicemia",
+      "Adulto quente",
+      "Vômitos persistentes",
+      "Dor moderada"
+    ],
+    "green": [
+      "Febril",
+      "Vômitos",
+      "Dor leve recente",
+      "Evento recente"
+    ]
+}

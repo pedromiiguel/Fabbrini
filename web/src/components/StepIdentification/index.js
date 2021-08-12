@@ -1,18 +1,21 @@
-import React, { useState } from 'react';
-import Typography from '@material-ui/core/Typography';
+import React, { useContext, useState } from 'react';
+import {
+  TextField,
+  Typography,
+  Box,
+  Button,
+  Select,
+  InputLabel,
+  FormControl,
+} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
-import DateFnsUtils from '@date-io/date-fns'; // choose your lib
-import Select from '@material-ui/core/Select';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
+import DateFnsUtils from '@date-io/date-fns';
 import {
   KeyboardDatePicker,
   MuiPickersUtilsProvider,
 } from '@material-ui/pickers';
 import api from '../../services/api';
+import { SymptonContext } from '../../context/SymptonContext';
 
 const useStyles = makeStyles((theme) => ({
   instructions: {
@@ -35,16 +38,18 @@ const useStyles = makeStyles((theme) => ({
   },
   stepOne: {
     width: '100%',
-    height: '280px',
-    paddingBottom: '60px',
+    height: '250px',
     writingMode: 'horizontal-tb',
+    // backgroundColor: 'yellow',
   },
   buttonsContainer: {
     display: 'flex',
     justifyContent: 'flex-end',
     width: '100%',
+    height: '100%',
+    // backgroundColor: 'blue',
     borderTop: '1px solid #E0E0E0',
-    marginTop: '60px',
+    marginTop: '20px',
   },
   buttons: {
     padding: '20px',
@@ -57,59 +62,47 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function StepIdentification({ handleNext, handleBack }) {
-  // const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
-  // const date = new Date();
-  // let dataAtual = date.toLocaleDateString('pt-br', options);
-  // console.log(dataAtual);
+function StepIdentification() {
   const [name, setName] = useState('');
   const [cpf, setCpf] = useState('');
   const [birthDate, setBirthDate] = useState(new Date());
   const [sex, setSex] = useState('');
   const [telephone, setTelephone] = useState('');
 
+  const { handleNext } = useContext(SymptonContext);
+
   function handleSubmit(event) {
     event.preventDefault();
 
-    const data = {
-      name,
-      cpf,
-      birthDate,
-      sex,
-      telephone,
-    };
+    const data = { name, cpf, birthDate, sex, telephone };
 
-    // api.post('/users', {
-    //     name,
-    //     cpf,
-    //     birthDate,
-    //     sex,
-    //     telephone,
-    //   })
-    //   .then(() => {
-    //     alert('Cadastro realizado com sucesso!');
-    //   })
-    //   .catch((err) => alert(err));
+    api
+      .post('/user/register', data)
+      .then(() => {
+        alert('Cadastro realizado com sucesso!');
+      })
+      .catch((err) => alert(err));
 
-    console.log(data);
     handleNext();
   }
+
   const classes = useStyles();
 
   return (
-    <Box className={classes.stepOne}>
+    <Box>
       <Typography className={classes.instructions}>
-        Já possui conta no Fabbrini, faça seu{' '}
+        Já possui conta no Fabbrini, faça seu
         <a href="/" className={classes.link}>
           login
         </a>
         . Ou informe seus dados de identificação:
       </Typography>
       <form
+        id="formIdentification"
         noValidate
         autoComplete="off"
         onSubmit={handleSubmit}
-        className={classes.formContainer}
+        className={classes.stepOne}
       >
         <div className={classes.inputField}>
           <TextField
@@ -181,21 +174,21 @@ function StepIdentification({ handleNext, handleBack }) {
             </Select>
           </FormControl>
         </div>
-        <div className={classes.buttonsContainer}>
-          <div className={classes.buttons}>
-            <Button>Back</Button>
-            <Button
-              variant="contained"
-              color="primary"
-              size="large"
-              id="finishButton"
-              type="submit"
-            >
-              Próximo
-            </Button>
-          </div>
-        </div>
       </form>
+      <div className={classes.buttonsContainer}>
+        <div className={classes.buttons}>
+          <Button
+            form="formIdentification"
+            variant="contained"
+            color="primary"
+            size="large"
+            id="finishButton"
+            type="submit"
+          >
+            Próximo
+          </Button>
+        </div>
+      </div>
     </Box>
   );
 }

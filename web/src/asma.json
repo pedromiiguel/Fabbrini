@@ -1,0 +1,27 @@
+{
+  "disease" : "Asma",
+    "red": [
+      "Obstrução das vias áreas",
+      "Respiração inadequada",
+      "Estado de choque",
+      "Criança não reativa"
+    ],
+    "orange": [
+      "Frases entrecortadas",
+      "História respiratória significativa",
+      "Pulso anormal",
+      "Saturação de O2 muito baixa",
+      "Alteração súbita de consciência",
+      "PFE muito baixo"
+    ],
+    "yellow": [
+      "Saturação de 02 baixa",
+      "Sem melhora com sua medicação habitual",
+      "PFE baixo"
+    ],
+    "green": [
+      "Chieira",
+      "Tosse produtiva",
+      "Evento recente"
+    ]
+}

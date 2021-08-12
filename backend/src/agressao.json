@@ -1,0 +1,26 @@
+{
+  "disease" : "Agressão",
+  "red": [
+    "Obstrução das vias áreas",
+    "Respiração inadequada",
+    "Hemorragia exanguinante",
+    "Choque"
+  ],
+  "orange": [
+    "Mecanismo de trauma significativo",
+    "Dispinéia aguda",
+    "Hemorragia maior incontrolável",
+    "Alteração súbita de consciência",
+    "Deficit neurológico agudo",
+    "Dor intensa"
+  ],
+  "yellow": [
+    "Hemorragia menor incontrolável",
+    "História de inconsciência",
+    "Deficit neurológico novo",
+    "Distúrbio de coagulação",
+    "História discordante",
+    "Dor moderada"
+  ],
+  "green": ["Edema", "Deformidade", "Dor leve recente", "Evento recente"]
+}

@@ -1,0 +1,30 @@
+{
+  "disease" : "Doença sexualmente transmissível",
+    "red": [
+      "Obstrução das vias áreas",
+      "Respiração ineficaz",
+      "Choque"
+    ],
+    "orange": [
+      "Alteração súbita da consciência",
+      "Erupção cutânea fixa",
+      "Púrpura",
+      "Adulto muito quente",
+      "Dor intensa"
+    ],
+    "yellow": [
+      "Dor testicular",
+      "Erupção ou vesículas disseminadas",
+      "Imunossupressão conhecida",
+      "Dor ao movimento articular",
+      "Articulação quente",
+      "Adulto quente",
+      "Dor moderada"
+    ],
+    "green": [
+      "Febril",
+      "Corrimento",
+      "Dor leve recente",
+      "Evento recente"
+    ]
+}
