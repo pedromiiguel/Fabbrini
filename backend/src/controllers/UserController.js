@@ -14,10 +14,9 @@ module.exports = {
   async create(req, res) {
     try {
       const user = await User.create(req.body);
-
-      res.send({ user, token: generateToken({ id: user.id }) });
+      res.send({ user });
     } catch (error) {
-      // res.json({ error: true, message: error.message });
+      res.json({ error: true, message: error.message });
       console.log(error);
     }
   },

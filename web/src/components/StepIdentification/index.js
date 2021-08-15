@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import {
   TextField,
   Typography,
@@ -7,6 +7,7 @@ import {
   Select,
   InputLabel,
   FormControl,
+  FormHelperText,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import DateFnsUtils from '@date-io/date-fns';
@@ -14,8 +15,13 @@ import {
   KeyboardDatePicker,
   MuiPickersUtilsProvider,
 } from '@material-ui/pickers';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 import api from '../../services/api';
 import { SymptonContext } from '../../context/SymptonContext';
+import { useForm, Controller } from 'react-hook-form';
+import MaskedInput from 'react-text-mask';
+import ptLocale from 'date-fns/locale/pt';
 
 const useStyles = makeStyles((theme) => ({
   instructions: {
@@ -27,10 +33,11 @@ const useStyles = makeStyles((theme) => ({
     display: 'grid',
     gridTemplateColumns: '1fr 1fr 1fr',
     gridTemplateRows: '1fr 1fr',
-    width: '900px',
+    width: '80%',
+    alignItems: 'center',
+    justifyContent: 'center',
     gap: '30px',
-    marginTop: '50px',
-    paddingLeft: '26px',
+    padding: '32px',
   },
   link: {
     textDecoration: 'none',
@@ -38,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   },
   stepOne: {
     width: '100%',
-    height: '250px',
+    height: '300px',
     writingMode: 'horizontal-tb',
     // backgroundColor: 'yellow',
   },
@@ -52,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '20px',
   },
   buttons: {
-    padding: '20px',
+    padding: '32px 32px',
   },
 
   textField: {
@@ -60,21 +67,103 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(1),
     width: 200,
   },
+  formControl: {
+    width: '100%',
+  },
 }));
 
+function TelephoneMaskCustom(props) {
+  const { inputRef, ...other } = props;
+
+  return (
+    <MaskedInput
+      {...other}
+      ref={(ref) => {
+        inputRef(ref ? ref.inputElement : null);
+      }}
+      mask={[
+        '(',
+        /[0-9]/,
+        /\d/,
+        ')',
+        ' ',
+        /\d/,
+        /\d/,
+        /\d/,
+        '-',
+        /\d/,
+        /\d/,
+        /\d/,
+        /\d/,
+      ]}
+      placeholderChar={'\u2000'}
+    />
+  );
+}
+function CPFMaskCustom(props) {
+  const { inputRef, ...other } = props;
+
+  return (
+    <MaskedInput
+      {...other}
+      ref={(ref) => {
+        inputRef(ref ? ref.inputElement : null);
+      }}
+      mask={[
+        /[0-9]/,
+        /\d/,
+        /\d/,
+        '.',
+        /\d/,
+        /\d/,
+        /\d/,
+        '.',
+        /\d/,
+        /\d/,
+        /\d/,
+        '-',
+        /\d/,
+        /\d/,
+      ]}
+      placeholderChar={'\u2000'}
+    />
+  );
+}
+
+const validationSchema = yup.object().shape({
+  name: yup
+    .string()
+    .required('Nome é obrigatório')
+    .min(5, 'O campo nome deve ter mais de 5 caracteres')
+    .max(100, 'O campo nome deve ter menos de 100 caracteres'),
+  cpf: yup
+    .string()
+    .required('CPF é obrigatório')
+    .matches(
+      /([0-9]{2}[.]?[0-9]{3}[.]?[0-9]{3}[/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{2})/,
+      'CPF inválido'
+    ),
+  telephone: yup.string().required('Telefone é obrigatório'),
+  birthDate: yup
+    .string('Data de nascimento inválida')
+    .required('Data de nascimento é obrigatório'),
+  sex: yup.string().required('Sexo é obrigatório'),
+});
+
 function StepIdentification() {
-  const [name, setName] = useState('');
-  const [cpf, setCpf] = useState('');
-  const [birthDate, setBirthDate] = useState(new Date());
-  const [sex, setSex] = useState('');
-  const [telephone, setTelephone] = useState('');
+  const {
+    control,
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(validationSchema),
+  });
 
   const { handleNext } = useContext(SymptonContext);
 
-  function handleSubmit(event) {
-    event.preventDefault();
-
-    const data = { name, cpf, birthDate, sex, telephone };
+  function onSubmit(data) {
+    console.log(data);
 
     api
       .post('/user/register', data)
@@ -93,6 +182,7 @@ function StepIdentification() {
       <Typography className={classes.instructions}>
         Já possui conta no Fabbrini, faça seu
         <a href="/" className={classes.link}>
+          {' '}
           login
         </a>
         . Ou informe seus dados de identificação:
@@ -101,78 +191,97 @@ function StepIdentification() {
         id="formIdentification"
         noValidate
         autoComplete="off"
-        onSubmit={handleSubmit}
+        onSubmit={handleSubmit(onSubmit)}
         className={classes.stepOne}
       >
         <div className={classes.inputField}>
           <TextField
-            id="outlined-basic"
             label="Nome"
             type="text"
             variant="outlined"
-            value={name}
-            onChange={(event) => {
-              setName(event.target.value);
-            }}
+            id="name"
+            error={errors.name ? true : false}
+            {...register('name')}
+            helperText={errors.name && errors.name.message}
           />
+
           <TextField
-            id="outlined-basic"
             label="CPF"
             type="text"
-            variant="outlined"
-            value={cpf}
-            onChange={(event) => {
-              setCpf(event.target.value);
+            InputProps={{
+              inputComponent: CPFMaskCustom,
             }}
+            variant="outlined"
+            id="cpf"
+            error={errors.cpf ? true : false}
+            {...register('cpf')}
+            helperText={errors.cpf && errors.cpf.message}
           />
-
           <TextField
-            id="outlined-basic"
             label="Telefone"
-            type="tel"
-            variant="outlined"
-            value={telephone}
-            onChange={(event) => {
-              setTelephone(event.target.value);
+            InputProps={{
+              inputComponent: TelephoneMaskCustom,
             }}
+            variant="outlined"
+            id="telephone"
+            error={errors.telephone ? true : false}
+            {...register('telephone')}
+            helperText={errors.telephone && errors.telephone.message}
           />
-
-          <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <KeyboardDatePicker
-              disableFuture
-              inputVariant="outlined"
-              label="Data de nascimento"
-              format="dd/MM/yyyy"
-              value={birthDate}
-              openTo="year"
-              views={['year', 'month', 'date']}
-              onChange={setBirthDate}
-              invalidDateMessage="Data inválida"
-              KeyboardButtonProps={{
-                'aria-label': 'change date',
-              }}
+          <MuiPickersUtilsProvider locale={ptLocale} utils={DateFnsUtils}>
+            <Controller
+              name="birthDate"
+              control={control}
+              render={({ field }) => (
+                <KeyboardDatePicker
+                  {...field}
+                  inputVariant="outlined"
+                  disableFuture
+                  format="dd/MM/yyyy"
+                  openTo="year"
+                  views={['year', 'month', 'date']}
+                  id="birthDate"
+                  label="Data de nascimento"
+                  error={errors.birthDate ? true : false}
+                  KeyboardButtonProps={{
+                    'aria-label': 'change date',
+                  }}
+                  helperText={errors.birthDate && errors.birthDate.message}
+                />
+              )}
             />
           </MuiPickersUtilsProvider>
+          <Controller
+            name="sex"
+            control={control}
+            render={({ field }) => (
+              <FormControl
+                {...field}
+                error={errors.sex ? true : false}
+                variant="outlined"
+              >
+                <InputLabel htmlFor="outlined-age-native-simple">
+                  Sexo
+                </InputLabel>
+                <Select
+                  native
+                  label="Sexo"
+                  inputProps={{
+                    name: 'Sexo',
+                    id: 'outlined-age-native-simple',
+                  }}
+                >
+                  <option aria-label="None" value="" />
+                  <option value="Feminino">Feminino</option>
+                  <option value="Masculino">Masculino</option>
+                </Select>
 
-          <FormControl variant="outlined" className={classes.formControl}>
-            <InputLabel htmlFor="outlined-age-native-simple">Sexo</InputLabel>
-            <Select
-              native
-              value={sex}
-              onChange={(event) => {
-                setSex(event.target.value);
-              }}
-              label="Sexo"
-              inputProps={{
-                name: 'Sexo',
-                id: 'outlined-age-native-simple',
-              }}
-            >
-              <option aria-label="None" value="" />
-              <option value="Feminino">Feminino</option>
-              <option value="Masculino">Masculino</option>
-            </Select>
-          </FormControl>
+                <FormHelperText>
+                  {errors.sex && errors.sex.message}
+                </FormHelperText>
+              </FormControl>
+            )}
+          />
         </div>
       </form>
       <div className={classes.buttonsContainer}>

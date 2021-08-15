@@ -7,9 +7,10 @@ const UserSchema = new mongoose.Schema({
   cpf: {
     type: String,
     required: true,
+    unique: true,
   },
   birthDate: {
-    type: String,
+    type: Date,
     required: true,
   },
   sex: {
@@ -25,7 +26,5 @@ const UserSchema = new mongoose.Schema({
     default: Date.now(),
   },
 });
-
-
 
 module.exports = mongoose.model("User", UserSchema);

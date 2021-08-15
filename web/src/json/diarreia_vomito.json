@@ -1,5 +1,5 @@
 {
-  "disease" : "Diarréia e/ou Vômitos",
+  "disease" : "Diarréia e ou Vômitos",
     "red": [
       "Obstrução das vias áreas",
       "Respiração inadequada",
@@ -8,7 +8,6 @@
     ],
     "orange": [
       "Alteração súbita da consciência",
-
       "Criança não reage aos pais",
       "História respiratória significativa",
       "Evacuação de sangue vivo ou escurecido",

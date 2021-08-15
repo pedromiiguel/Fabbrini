@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
 import Chip from '@material-ui/core/Chip';
-import {Box}from '@material-ui/core';
+import { Box } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import api from '../../services/api';
 import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
 import { ThemeProvider } from '@material-ui/core/';
-import DoneIcon from '@material-ui/icons/Done';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import './styles.css';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const theme = createMuiTheme({
+
+const theme = createTheme({
   palette: {
     primary: {
       main: '#2196F3',
@@ -22,24 +22,16 @@ const theme = createMuiTheme({
 export default function ModalTriagem() {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState({});
-  const history = useHistory();
 
   useEffect(() => {
     setTimeout(() => {
       api.get('/screening/result').then((response) => {
+        setData(response.data);
 
-        setData(
-          response.data
-        )
-
-        setIsLoading(false)
-
+        setIsLoading(false);
       });
-    }, 200)
+    }, 200);
   }, []);
-  function handleDelete(event) {
-    event.preventDefault();
-  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -56,24 +48,35 @@ export default function ModalTriagem() {
             <p className="description">
               De acordo com as informações fornecidas por você:
             </p>
+
             <div className="state">
               <p>Seu estado é:</p>
               <div className="chip-container">
-              <Box style={{background: data.color  }} className="chip" >{data.triagemResult}</Box>
-                {/* <Box style={{background: '#2196F3' }} className="chip" >{data.discriminators[0]}</Box> */}
-                <Box style={{background: '#2196F3' }} className="chip" >{data.flowchart}</Box>
+                <Box
+                  style={{
+                    background: `${data.color} linear-gradient(transparent 0, rgba(0, 0, 0, 0.20) 0%)`,
+                  }}
+                  className="chip"
+                >
+                  {/* <img src={handImage(data.color)} alt="" srcset="" /> */}
 
+                  <span>{data.triagemResult}</span>
+                </Box>
+                <Box style={{ background: '#2196F3' }} className="chip">
+                  <span>{data.flowchart}</span>
+                </Box>
               </div>
             </div>
             <div className="position">
               <p>Sua posição na fila é: </p>
               <Chip
-              size="medium"
+                size="medium"
                 icon={<QueryBuilderIcon />}
                 label={`Número ${data.queueScreening}`}
               />
             </div>
 
+            <Box className="hand">{/* {data.triagemResult} */}</Box>
             <div className="recommendation">
               <div className="recommendation-content">
                 <h3>O Fabrinni recomenda que você:</h3>

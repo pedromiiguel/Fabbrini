@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
+import { makeStyles, createTheme } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
@@ -11,7 +11,7 @@ import StepHealth from '../StepHealth';
 
 import { SymptonContext } from '../../context/SymptonContext';
 
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
     primary: {
       main: '#2196F3',
@@ -32,7 +32,6 @@ const useStyles = makeStyles((theme) => ({
   steeper: {
     width: '100%',
     height: '100%',
-    // backgroundColor: 'red',
   },
 }));
 

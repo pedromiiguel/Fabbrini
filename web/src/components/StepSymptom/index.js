@@ -1,16 +1,19 @@
 import React, { useContext } from 'react';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import {
   Box,
   Button,
   FormControl,
   FormControlLabel,
+  FormHelperText,
   Radio,
   RadioGroup,
+  Typography,
 } from '@material-ui/core';
+import { useForm, Controller } from 'react-hook-form';
 import { SymptonContext } from '../../context/SymptonContext';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
 const useStyles = makeStyles((theme) => ({
   instructions: {
@@ -25,9 +28,8 @@ const useStyles = makeStyles((theme) => ({
   },
   stepOne: {
     width: '100%',
-    height: '300px',
+    height: '332px',
     writingMode: 'horizontal-tb',
-    // backgroundColor: 'yellow',
   },
   textBold: {
     fontWeight: 'bold',
@@ -35,31 +37,41 @@ const useStyles = makeStyles((theme) => ({
   },
   formControl: {
     width: '100%',
-    padding: '16px'
+    padding: '16px',
   },
   radioGroup: {
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr 1fr',
-    gridTemplateRows: '1fr 1fr 1fr 1fr 1fr 1fr 1fr',
+    display: 'flex',
+    flexDirection: 'column',
     width: '100%',
-    // marginTop: '50px',
-    // paddingLeft: '26px',
   },
   buttonsContainer: {
     display: 'flex',
     justifyContent: 'flex-end',
+    alignItems: 'center',
     width: '100%',
-    // backgroundColor: 'blue',
     borderTop: '1px solid #E0E0E0',
-    marginTop: '20px',
+    margin: 'auto 0',
   },
   buttons: {
-    padding: '20px',
+    padding: '24px 32px',
   },
 }));
 
 function StepIdentification() {
-  const { handleBack, handleSubmit, handleChange } = useContext(SymptonContext);
+
+  const validationSchema = yup.object().shape({
+    symptom: yup.string().required('Escolha uma opção'),
+  });
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(validationSchema),
+  });
+
+  const { handleBack, onSubmit, handleChange } = useContext(SymptonContext);
 
   const classes = useStyles();
 
@@ -72,7 +84,7 @@ function StepIdentification() {
       },
     },
     checked: {},
-  })((props) => <Radio color="default" {...props} />);
+  })((props) => <Radio {...props} />);
 
   return (
     <Box>
@@ -85,89 +97,72 @@ function StepIdentification() {
         noValidate
         autoComplete="off"
         className={classes.stepOne}
-        onSubmit={handleSubmit}
+        onSubmit={handleSubmit(onSubmit)}
       >
-        <FormControl component="fieldset" className={classes.formControl}>
-          <RadioGroup
-            aria-label="gender"
-            name="customized-radios"
-            onChange={handleChange}
-            className={classes.radioGroup}
-          >
-            <FormControlLabel
-              control={<StyledRadio value="Agressão" />}
-              label="Agressão"
-            />
-            <FormControlLabel
-              control={<StyledRadio value="Asma" />}
-              label="Asma"
-            />
-            <FormControlLabel
-              control={<StyledRadio value="Bebê chorando" />}
-              label="Bebê chorando"
-            />
-            <FormControlLabel
-              control={<StyledRadio value="Diabetes" />}
-              label="Diabetes"
-            />
-            <FormControlLabel
-              control={<StyledRadio value="Diarreia e/ou Vômitos" />}
-              label="Diarreia e/ou Vômitos"
-            />
-            <FormControlLabel
-              control={<StyledRadio value="Doença sexualmente transmissível" />}
-              label="Doença sexualmente transmissível"
-            />
-            <FormControlLabel
-              control={<StyledRadio value="Dor de garganta" />}
-              label="Dor de garganta"
-            />
-            <FormControlLabel
-              control={<StyledRadio value="Sim" />}
-              label="Bebê chorando"
-            />
-            <FormControlLabel
-              control={<StyledRadio value="Sim" />}
-              label="Bebê chorando"
-            />
-            <FormControlLabel
-              control={<StyledRadio value="Sim" />}
-              label="Bebê chorando"
-            />
-            <FormControlLabel
-              control={<StyledRadio value="Sim" />}
-              label="Bebê chorando"
-            />
-            <FormControlLabel
-              control={<StyledRadio value="Sim" />}
-              label="Bebê chorando"
-            />
-            <FormControlLabel
-                control={<StyledRadio value="Sim" />}
-                label="Bebê chorando"
-              /><FormControlLabel
-              control={<StyledRadio value="Sim" />}
-              label="Bebê chorando"
-            /><FormControlLabel
-            control={<StyledRadio value="Sim" />}
-            label="Bebê chorando"
-          /><FormControlLabel
-          control={<StyledRadio value="Sim" />}
-          label="Bebê chorando"
+        <Controller
+          name="symptom"
+          control={control}
+          render={({ field }) => (
+            <FormControl
+              {...field}
+              error={errors.symptom ? true : false}
+              component="fieldset"
+              className={classes.formControl}
+            >
+              <RadioGroup
+                aria-label="gender"
+                name="customized-radios"
+                onChange={handleChange}
+                className={classes.radioGroup}
+              >
+                <FormControlLabel
+                  control={
+                    <StyledRadio
+                      value="Agressão"
+                      error={errors.symptom ? true : false}
+                    />
+                  }
+                  label="Agressão"
+                />
+                <FormControlLabel
+                  control={<StyledRadio value="Asma" />}
+                  label="Asma"
+                />
+                <FormControlLabel
+                  control={<StyledRadio value="Bebê chorando" />}
+                  label="Bebê chorando"
+                />
+                <FormControlLabel
+                  control={<StyledRadio value="Diabetes" />}
+                  label="Diabetes"
+                />
+                <FormControlLabel
+                  control={<StyledRadio value="Diarréia e ou Vômitos" />}
+                  label="Diarreia e/ou Vômitos"
+                />
+                <FormControlLabel
+                  control={
+                    <StyledRadio value="Doença sexualmente transmissível" />
+                  }
+                  label="Doença sexualmente transmissível"
+                />
+                <FormControlLabel
+                  control={<StyledRadio value="Dor de garganta" />}
+                  label="Dor de garganta"
+                />
+              </RadioGroup>
+              <FormHelperText>
+                {errors.symptom && errors.symptom.message}
+              </FormHelperText>
+            </FormControl>
+          )}
         />
-        <FormControlLabel
-                control={<StyledRadio value="Sim" />}
-                label="Bebê chorando"
-              /><FormControlLabel
-              control={<StyledRadio value="Sim" />}
-              label="Bebê chorando"
-            />
-          </RadioGroup>
-        </FormControl>
       </form>
       <div className={classes.buttonsContainer}>
         <div className={classes.buttons}>
-          <Button onClick={handleBack}>Back</Button>
+          <Button className={classes.backButton} onClick={handleBack}>
+            Voltar
+          </Button>
           <Button
             form="formSymptom"
             variant="contained"

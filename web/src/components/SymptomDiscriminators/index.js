@@ -1,13 +1,21 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { SymptonContext } from '../../context/SymptonContext';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Typography from '@material-ui/core/Typography';
-import FormControl from '@material-ui/core/FormControl';
-import { Box, makeStyles, Radio, withStyles } from '@material-ui/core';
+import {
+  Box,
+  makeStyles,
+  Radio,
+  withStyles,
+  Typography,
+  FormControlLabel,
+  FormControl,
+  RadioGroup,
+} from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
-
+  container: {
+    overflowY: 'auto',
+    height: '280px',
+  },
   formControl: {
     width: '600px',
     display: 'flex',
@@ -30,23 +38,22 @@ const StyledRadio = withStyles({
   checked: {},
 })((props) => <Radio color="default" {...props} />);
 
-export default function SymptomDiscriminators({ data, color  }) {
-  const {  specification, setSpecification, setColor } =
-  useContext(SymptonContext);
-
-
+export default function SymptomDiscriminators({ data, color }) {
+  const { specification, setSpecification, setColor } =
+    useContext(SymptonContext);
 
   const classes = useStyles();
 
   return (
     <Box className={classes.container}>
-      {data.map((sintoma) => (
+      {data.map((sintoma, index) => (
         <FormControl
           key={sintoma}
           component="fieldset"
           className={classes.formControl}
         >
           <Typography>{sintoma}</Typography>
+
           <RadioGroup
             aria-label="gender"
             name="customized-radios"
@@ -56,8 +63,7 @@ export default function SymptomDiscriminators({ data, color  }) {
                 ...specification,
                 [sintoma]: event.target.value,
               });
-              setColor(color)
-
+              setColor(color);
             }}
           >
             <FormControlLabel

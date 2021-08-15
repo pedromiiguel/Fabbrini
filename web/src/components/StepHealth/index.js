@@ -1,13 +1,11 @@
 import React, { useContext, useState } from 'react';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
-// import asma from '../../asma.json';
+import { Box, Button, Typography } from '@material-ui/core';
 import api from '../../services/api';
 import { SymptonContext } from '../../context/SymptonContext';
-import SynptomDiscriminators from '../SynptomDiscriminators';
+import SymptomDiscriminators from '../SymptomDiscriminators';
 import { useHistory } from 'react-router-dom';
+
 const useStyles = makeStyles((theme) => ({
   instructions: {
     marginTop: theme.spacing(3),
@@ -18,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     width: '100%',
+    height: '332px',
   },
   link: {
     textDecoration: 'none',
@@ -25,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
   },
   stepOne: {
     width: '100%',
-    height: '250px',
     // backgroundColor: 'yellow',
   },
   formLabelLegend: {
@@ -49,11 +47,10 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-end',
     width: '100%',
     borderTop: '1px solid #E0E0E0',
-    marginTop: '20px',
     // backgroundColor: 'blue',
   },
   buttons: {
-    padding: '20px',
+    padding: '16px 32px',
   },
 }));
 
@@ -64,13 +61,11 @@ function StepIdentification() {
   const {
     setActiveStep,
     disease,
-    handleNext,
     handleBack,
     specification,
     setSpecification,
     synmtomQuestions,
     color,
-    setColor,
     setSymptom,
     symptom,
   } = useContext(SymptonContext);
@@ -87,25 +82,25 @@ function StepIdentification() {
     switch (stepIndex) {
       case 0:
         return (
-          <SynptomDiscriminators data={synmtomQuestions.red} color={'red'} />
+          <SymptomDiscriminators data={synmtomQuestions.red} color={'red'} />
         );
       case 1:
         return (
-          <SynptomDiscriminators
+          <SymptomDiscriminators
             data={synmtomQuestions.orange}
             color={'orange'}
           />
         );
       case 2:
         return (
-          <SynptomDiscriminators
+          <SymptomDiscriminators
             data={synmtomQuestions.yellow}
             color={'yellow'}
           />
         );
       case 3:
         return (
-          <SynptomDiscriminators
+          <SymptomDiscriminators
             data={synmtomQuestions.green}
             color={'green'}
           />
@@ -124,12 +119,12 @@ function StepIdentification() {
       color: color,
       query: false,
       discriminators: specification,
-      user_id: '60f586d54771b7170cc29de0',
+      user_id: '611862cf21fdc01b4819b7a5',
     };
 
-    const teste = result.includes('true');
+    const discriminatorTrue = result.includes('true');
 
-    if (teste) {
+    if (discriminatorTrue) {
       api
         .post('screening', data)
         .then(() => {
@@ -145,10 +140,10 @@ function StepIdentification() {
       history.push('/modal');
       console.log(data);
     }
-    if (!teste) {
+    if (!discriminatorTrue) {
       handleNextColor();
     }
-    if (!teste && activeColor === 3) {
+    if (!discriminatorTrue && activeColor === 3) {
       data.color = 'blue';
       api
         .post('screening', data)
@@ -190,7 +185,7 @@ function StepIdentification() {
               activeColor !== 0 ? handleBackColor() : handleBack();
             }}
           >
-            Back
+            Voltar
           </Button>
           <Button
             form="formHealth"

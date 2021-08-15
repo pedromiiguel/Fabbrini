@@ -8,5 +8,5 @@ mongoose.set("useUnifiedTopology", true);
 
 mongoose
   .connect(URI)
-  .then(() => console.log("DB is up!"))
+  .then(() => console.log("DB is up"))
   .catch((err) => console.log(err));

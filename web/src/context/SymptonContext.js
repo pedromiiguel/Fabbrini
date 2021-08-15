@@ -1,24 +1,22 @@
 import { createContext, useState } from 'react';
-import asma from '../asma.json';
-import agressao from '../agressao.json';
-import bebeChorando from '../bebe_chorando.json';
-import diabetes from '../diabetes.json';
-import diarreia_vomito from '../diarreia_vomito.json';
-import doenca_sexual from '../doenca_sexual.json';
-import dor_garganta from '../dor_garganta.json';
+import asma from '../json/asma.json';
+import agressao from '../json/agressao.json';
+import bebeChorando from '../json/bebe_chorando.json';
+import diabetes from '../json/diabetes.json';
+import diarreia_vomito from '../json/diarreia_vomito.json';
+import doenca_sexual from '../json/doenca_sexual.json';
+import dor_garganta from '../json/dor_garganta.json';
 
-import api from '../services/api';
 export const SymptonContext = createContext({});
 
 export default function SymptonContextProvider({ children }) {
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(1);
   const [synmtomQuestions, setSynmtomQuestions] = useState({});
   const [disease, setDisease] = useState('');
   const [open, setOpen] = useState(false);
   const [symptom, setSymptom] = useState({});
   const [specification, setSpecification] = useState({});
   const [color, setColor] = useState('');
-  console.log(activeStep)
   const diseaseArray = [
     asma,
     agressao,
@@ -28,7 +26,6 @@ export default function SymptonContextProvider({ children }) {
     doenca_sexual,
     dor_garganta,
   ];
-
 
   const handleOpen = () => {
     setOpen(true);
@@ -51,28 +48,17 @@ export default function SymptonContextProvider({ children }) {
     setSymptom({ flowchart: event.target.value });
   };
 
-  function handleSubmit(event) {
-    event.preventDefault();
-
+  function onSubmit(data) {
     diseaseArray.forEach((doenca) => {
       if (
-        symptom.flowchart.toLowerCase().trim() ===
+        data.symptom.toLowerCase().trim() ===
         doenca.disease.toLowerCase().trim()
-      ){
+      ) {
         setDisease(doenca.disease);
         setSynmtomQuestions(doenca);
-
       }
-
     });
 
-    // api
-    //   .post('sympton', { symptom })
-    //   .then(() => {
-    //     alert('Realizado com sucesso!');
-    //   })
-    //   .catch((err) => console.log(err));
-    console.log(symptom);
     handleNext();
   }
 
@@ -83,7 +69,7 @@ export default function SymptonContextProvider({ children }) {
         setActiveStep,
         handleNext,
         handleBack,
-        handleSubmit,
+        onSubmit,
         handleChange,
         symptom,
         synmtomQuestions,
