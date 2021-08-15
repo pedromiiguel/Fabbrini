@@ -10,7 +10,7 @@ import dor_garganta from '../json/dor_garganta.json';
 export const SymptonContext = createContext({});
 
 export default function SymptonContextProvider({ children }) {
-  const [activeStep, setActiveStep] = useState(1);
+  const [activeStep, setActiveStep] = useState(0);
   const [synmtomQuestions, setSynmtomQuestions] = useState({});
   const [disease, setDisease] = useState('');
   const [open, setOpen] = useState(false);

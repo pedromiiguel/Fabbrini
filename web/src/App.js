@@ -15,7 +15,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Fabbrini} />
           <Route exact path="/autotriagem" component={Autotriagem} />
-          <Route exact path="/modal" component={Modal} />
+          <Route exact path="/triagem" component={Modal} />
           <Route component={() => <h1>Page 404</h1>} />
         </Switch>
       </SymptonContextProvider>
