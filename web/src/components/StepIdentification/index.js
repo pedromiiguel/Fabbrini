@@ -90,6 +90,7 @@ function TelephoneMaskCustom(props) {
         /\d/,
         /\d/,
         /\d/,
+        /\d/,
         '-',
         /\d/,
         /\d/,
@@ -168,7 +169,7 @@ function StepIdentification() {
     api
       .post('/user/register', data)
       .then(() => {
-        alert('Cadastro realizado com sucesso!');
+        console.log('ok')
       })
       .catch((err) => alert(err));
 
