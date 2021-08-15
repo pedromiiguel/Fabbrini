@@ -1,4 +1,4 @@
-const Screening = require("../models/Screening");
+const Screening = require('../models/Screening');
 
 module.exports = {
   async create(req, res) {
@@ -12,7 +12,7 @@ module.exports = {
   },
   async index(req, res) {
     try {
-      const screenings = await Screening.find({}).sort({ createdAt: "desc" });
+      const screenings = await Screening.find({}).sort({ createdAt: 'desc' });
 
       res.json(screenings);
     } catch (error) {
@@ -48,7 +48,7 @@ module.exports = {
       const { id } = req.params;
       await Screening.findByIdAndDelete(id);
 
-      res.json({ message: "Screening deleted" });
+      res.json({ message: 'Screening deleted' });
     } catch (error) {
       res.json({ error: true, message: error.message });
     }
@@ -60,7 +60,7 @@ module.exports = {
       const screenings = await Screening.find({
         query: false,
       });
-      console.log(screenings.length)
+      console.log(screenings.length);
       const queueRed = [];
       const queueOrange = [];
       const queueYellow = [];
@@ -72,19 +72,19 @@ module.exports = {
       const querys = screenings;
 
       querys.forEach((triagem) => {
-        if (triagem.color === "red") {
+        if (triagem.color === 'red') {
           queueRed.push(String(triagem._id));
         }
-        if (triagem.color === "orange") {
+        if (triagem.color === 'orange') {
           queueOrange.push(String(triagem._id));
         }
-        if (triagem.color === "yellow") {
+        if (triagem.color === 'yellow') {
           queueYellow.push(String(triagem._id));
         }
-        if (triagem.color === "green") {
+        if (triagem.color === 'green') {
           queueGreen.push(String(triagem._id));
         }
-        if (triagem.color === "blue") {
+        if (triagem.color === 'blue') {
           queueBlue.push(String(triagem._id));
         }
       });
@@ -142,11 +142,11 @@ module.exports = {
 
       function triagem(color) {
         const estados = {
-          red: "Emergência",
-          orange: "Muito Urgente",
-          yellow: "Urgente",
-          green: "Pouco urgente",
-          blue: "Não urgente",
+          red: 'Emergência',
+          orange: 'Muito Urgente',
+          yellow: 'Urgente',
+          green: 'Pouco urgente',
+          blue: 'Não urgente',
         };
 
         return estados[color];
@@ -158,15 +158,21 @@ module.exports = {
       // console.log(teste)
       const discriminators = [];
       teste.forEach((d) => {
-        if (d[1] === "true") {
+        if (d[1] === 'true') {
           // console.log(d)
           discriminators.push(d[0]);
         }
       });
       const triagemResult = triagem(screening.color);
-      const color = screening.color
-      const flowchart = screening.flowchart
-      res.json({ triagemResult, discriminators, queueScreening, color, flowchart });
+      const color = screening.color;
+      const flowchart = screening.flowchart;
+      res.json({
+        triagemResult,
+        discriminators,
+        queueScreening,
+        color,
+        flowchart,
+      });
     } catch (error) {
       console.log(error);
       res.json({ error: true, message: error.message });

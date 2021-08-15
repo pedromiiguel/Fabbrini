@@ -1,14 +1,5 @@
-const User = require("../models/User");
-const Screening = require("../models/Screening");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const authConfig = require('../config/auth.json');
-
-function generateToken(params = {}) {
-  return jwt.sign(params, authConfig.secret, {
-    expiresIn: 86400,
-  });
-}
+const User = require('../models/User');
+const Screening = require('../models/Screening');
 
 module.exports = {
   async create(req, res) {
@@ -17,7 +8,6 @@ module.exports = {
       res.send({ user });
     } catch (error) {
       res.json({ error: true, message: error.message });
-      console.log(error);
     }
   },
   async index(req, res) {
@@ -35,27 +25,6 @@ module.exports = {
       res.json(finalUser);
     } catch (error) {
       res.json({ error: true, message: error.message });
-    }
-  },
-
-  async login(req, res) {
-    try {
-      const { email, password } = req.body;
-
-      const user = await User.findOne({ email }).select("+password");
-
-      if (!user) {
-        res.status(400).send({ error: "User not found" });
-      }
-
-      if (!(await bcrypt.compare(password, user.password)))
-        return res.status(400).send({ error: "Invalid password" });
-
-      user.password = undefined;
-
-      res.send({ user , token: generateToken({ id: user.id }) });
-    } catch (err) {
-      console.log(err);
     }
   },
 
@@ -87,7 +56,7 @@ module.exports = {
       const { id } = req.params;
       await User.findByIdAndDelete(id);
 
-      res.json({ message: "User deleted" });
+      res.json({ message: 'User deleted' });
     } catch (error) {
       res.json({ error: true, message: error.message });
     }
