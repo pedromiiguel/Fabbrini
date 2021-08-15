@@ -157,7 +157,7 @@ function StepIdentification() {
       setSpecification({});
       setActiveStep(0);
 
-      history.push('/modal');
+      history.push('/triagem');
     }
   }
   return (
