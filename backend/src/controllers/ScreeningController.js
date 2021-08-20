@@ -56,7 +56,12 @@ module.exports = {
 
   async result(req, res) {
     try {
-      const screening = await Screening.findOne().sort({ _id: -1 });
+      const { id } = req.params;
+
+      const screening = await Screening.findOne({
+        user_id: id,
+      }).sort({ _id: -1 });
+      console.log(screening);
       const screenings = await Screening.find({
         query: false,
       });
@@ -96,6 +101,7 @@ module.exports = {
       });
 
       console.log(fila);
+
       queue.forEach((arrayScreening, index) => {
         if (arrayScreening.includes(String(screening._id))) {
           if (index === 0) {

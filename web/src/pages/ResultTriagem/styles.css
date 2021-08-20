@@ -75,9 +75,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 85%;
   gap: 60px;
-  margin-top: 30px;
+  margin: 30px auto;
+}
+
+.queueContainer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 85%;
+  margin-top: 24px;
 }
 
 .position {
@@ -90,7 +98,7 @@
   font-weight: normal;
   font-size: 18px;
   line-height: 21px;
-  margin: 20px 0px;
+
 }
 
 .recommendation {

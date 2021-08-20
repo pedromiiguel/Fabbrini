@@ -1,34 +1,40 @@
 {
-  "disease" : "Diarréia e ou Vômitos",
-    "red": [
-      "Obstrução das vias áreas",
-      "Respiração inadequada",
-      "Choque",
-      "Criança não reativa"
-    ],
-    "orange": [
-      "Alteração súbita da consciência",
-      "Criança não reage aos pais",
-      "História respiratória significativa",
-      "Evacuação de sangue vivo ou escurecido",
-      "Vômito de sangue",
-      "Prostração, hipotonia",
-      "Criança quente",
-      "Adulto muito quente",
-      "Dor intensa"
-    ],
-    "yellow": [
-      "Fezes pretas ou em groselha",
-      "História aguda de vômito de sangue",
-      "Sinais de desidratação",
-      "Vômitos persistentes",
-      "Adulto quente",
-      "Dor moderada"
-    ],
-    "green": [
-      "Febril",
-      "Vômito",
-      "Dor leve recente",
-      "Evento recente"
-    ]
+  "explication": {
+    "Evacuação de sangue vivo ou escurecido": "No sangramento gast rintestinal maciço haverá evacuação de sangue vermelho escuro. Quando o trânsito Gl aumenta, ele se torna progressivamente mais escuro até melena.",
+    "Fezes em groselha": "Fezes de coloração vermelha e scura, classicamente vistas em intussuscepção. Ausência deste tipo de fezes não exclui o diagnóstico.",
+    "Fezes pretas": "Qualquer escurecimento preenche este critério.",
+    "História aguda de vômito de sangue": "Hematêmese franca, vômito de sangue alterado (borra de café) ou sangue misturado com vômito nas últimas 24 horas.",
+    "Não reague aos pais": "Não reage de nenhuma forma ao rosto ou à voz dos pais. Reações anormais e aparente perda de reconhecimento dos pais também são sinais preocupantes.",
+    "Prostração, hipotonia": "Pais descrevem a criança como 'molinha'. O tônus geralmente está diminuído-o sinal mais característico é a cabeça caída.",
+    "Vômitos de sangue": "O sangue vomitado pode ser fresco (rutilante, ou escurecido) ou em borra de café.",
+    "Sinais de desidratação": "Língua seca, olhos fundos, turgor pastoso e, em bebês pequenos, fontanela baixa. Geralmente ha diminuição da diurese.",
+    "Vômitos persistentes": "Vômitos contínuos ou que ocorre sem alívio entre os episódios."
+  },
+  "disease": "Diarréia e ou Vômitos",
+  "red": [
+    "Obstrução das vias áreas",
+    "Respiração inadequada",
+    "Choque",
+    "Criança não reativa"
+  ],
+  "orange": [
+    "Alteração súbita da consciência",
+    "Criança não reage aos pais",
+    "História respiratória significativa",
+    "Evacuação de sangue vivo ou escurecido",
+    "Vômito de sangue",
+    "Prostração, hipotonia",
+    "Criança quente",
+    "Adulto muito quente",
+    "Dor intensa"
+  ],
+  "yellow": [
+    "Fezes pretas ou em groselha",
+    "História aguda de vômito de sangue",
+    "Sinais de desidratação",
+    "Vômitos persistentes",
+    "Adulto quente",
+    "Dor moderada"
+  ],
+  "green": ["Febril", "Vômito", "Dor leve recente", "Evento recente"]
 }

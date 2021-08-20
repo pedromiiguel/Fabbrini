@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { createTheme } from '@material-ui/core/styles';
 import Chip from '@material-ui/core/Chip';
 import { Box } from '@material-ui/core';
@@ -9,8 +9,8 @@ import { ThemeProvider } from '@material-ui/core/';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import './styles.css';
 import { Link } from 'react-router-dom';
-
-
+import { SymptonContext } from '../../context/SymptonContext';
+import RefreshIcon from '@material-ui/icons/Refresh';
 const theme = createTheme({
   palette: {
     primary: {
@@ -22,16 +22,30 @@ const theme = createTheme({
 export default function ModalTriagem() {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState({});
+  const { localData } = useContext(SymptonContext);
+  const id = String(localData?._id);
+
+  // function handImage(color) {
+  //   const img = {
+  //     red: hand_red,
+  //     orange: hand_orange,
+  //     yellow: hand_yellow,
+  //     green: hand_green,
+  //     blue: hand_blue,
+  //   };
+
+  //   return img[color];
+  // }
 
   useEffect(() => {
     setTimeout(() => {
-      api.get('/screening/result').then((response) => {
+      api.get(`/screening/result/${id}`).then((response) => {
         setData(response.data);
 
         setIsLoading(false);
       });
     }, 200);
-  }, []);
+  }, [id]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -58,8 +72,6 @@ export default function ModalTriagem() {
                   }}
                   className="chip"
                 >
-                  {/* <img src={handImage(data.color)} alt="" srcset="" /> */}
-
                   <span>{data.triagemResult}</span>
                 </Box>
                 <Box style={{ background: '#2196F3' }} className="chip">
@@ -69,14 +81,23 @@ export default function ModalTriagem() {
             </div>
             <div className="position">
               <p>Sua posição na fila é: </p>
-              <Chip
-                size="medium"
-                icon={<QueryBuilderIcon />}
-                label={`Número ${data.queueScreening}`}
-              />
+              <div className="queueContainer">
+                <Chip
+                  size="medium"
+                  icon={<QueryBuilderIcon />}
+                  label={`Número ${data.queueScreening}`}
+                />
+                <Chip
+                  size="medium"
+                  icon={<RefreshIcon />}
+                  label={`Atualizar`}
+                  onClick={() => {
+                    window.location.reload();
+                  }}
+                />
+              </div>
             </div>
 
-            <Box className="hand">{/* {data.triagemResult} */}</Box>
             <div className="recommendation">
               <div className="recommendation-content">
                 <h3>O Fabrinni recomenda que você:</h3>
@@ -90,7 +111,7 @@ export default function ModalTriagem() {
                 </p>
 
                 <div className="buttons-container">
-                  <Link to="/" className="link" color="danger">
+                  <Link to="/" target="_blank" className="link" color="danger">
                     Não
                   </Link>
                   <Button color="primary">Sim</Button>

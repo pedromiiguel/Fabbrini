@@ -9,6 +9,7 @@ import {
   FormControlLabel,
   FormControl,
   RadioGroup,
+
 } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -41,8 +42,9 @@ const StyledRadio = withStyles({
 export default function SymptomDiscriminators({ data, color }) {
   const { specification, setSpecification, setColor } =
     useContext(SymptonContext);
-
   const classes = useStyles();
+
+
 
   return (
     <Box className={classes.container}>
@@ -52,8 +54,7 @@ export default function SymptomDiscriminators({ data, color }) {
           component="fieldset"
           className={classes.formControl}
         >
-          <Typography>{sintoma}</Typography>
-
+          <Typography>{sintoma}</Typography>{' '}
           <RadioGroup
             aria-label="gender"
             name="customized-radios"

@@ -1,5 +1,14 @@
 {
-  "disease" : "Agressão",
+  "explication": {
+    "Alteração súbita de consciência": "Alteração da Escala de Coma de Glasgow nas últimas 12h em relação ao estado prévio. Em caso de dúvida, presumir alteração do estado de consciência.",
+    "Déficit neurológico agudo": "Qualquer perda de função neurológica que ocorreu nas últimas 24h: alteração ou perda de sensibilidade, fraqueza de membros (transitória ou permanente), retenção urinária ou alteração da função intestinal.",
+    "Deformidade": "Isto é sempre subjetivo. Inclui angulação ou rotação anormais.",
+    "Dispnéia aguda": "Qualquer perda de função neurológica: alteração ou perda de sensibilidade, fraqueza de membros (transitória ou permanente), retenção urinária ou alteração da função intestinal há mais de 24h.",
+    "Edema": "Inchaço, qualquer aumento anormal de tamanho.",
+    "História de inscociência": "Deve haver uma testemunha confiável para relatar se o paciente perdeu a consciência e por quanto tempo. Caso contrário, se o paciente não se lembra do incidente, deve-se presumir que esteve inconsciente.",
+    "Mecanismo de trauma significativo": "Trauma penetrante (facada ou tiro) e trauma com alta transferência de energia como queda de altura e acidentes em vias de trânsito rápido (velocidade > 60 Km/h) são significativos, principalmente se houve ejeção do veículo, mortes de outras vítimas ou grande de formação do veículo."
+  },
+  "disease": "Agressão",
   "red": [
     "Obstrução das vias áreas",
     "Respiração inadequada",

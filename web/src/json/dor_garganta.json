@@ -1,27 +1,30 @@
 {
-  "disease" : "Dor de garganta",
-    "red": [
-      "Obstrução das vias áreas",
-      "Respiração inadequada",
-      "Estridor",
-      "Baba-se",
-      "Choque"
-    ],
-    "orange": [
-      "Alteração súbita da consciência",
-      "Adulto muito quente",
-      "Criança quente",
-      "Dor intensa"
-    ],
-    "yellow": [
-      "História de viagem recente",
-      "Início súbito",
-      "Adulto quente",
-      "Dor moderada"
-    ],
-    "green": [
-      "Febril",
-      "Dor leve recente",
-      "Evento recente"
-    ]
+  "explication": {
+    "Alteração súbita de consciência": "Alteração da Escala de Coma de Glasgow nas últimas 12h em relação ao estado prévio. Em caso de dúvida, presumir alteração do estado de consciência.",
+    "Baba-se": "Saliva saindo pela boca por incapacidade de engolir.",
+    "Estridor": "Ruído inspiratório, expiratório ou ambos, melhor escutando ao se respirar de boca aberta.",
+    "História de viagem recente": "Viagem nas duas últimas semanas",
+    "Início súbito": "Início nas últimas 12 horas."
+  },
+  "disease": "Dor de garganta",
+  "red": [
+    "Obstrução das vias áreas",
+    "Respiração inadequada",
+    "Estridor",
+    "Baba-se",
+    "Choque"
+  ],
+  "orange": [
+    "Alteração súbita da consciência",
+    "Adulto muito quente",
+    "Criança quente",
+    "Dor intensa"
+  ],
+  "yellow": [
+    "História de viagem recente",
+    "Início súbito",
+    "Adulto quente",
+    "Dor moderada"
+  ],
+  "green": ["Febril", "Dor leve recente", "Evento recente"]
 }

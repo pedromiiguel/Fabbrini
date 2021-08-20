@@ -1,31 +1,44 @@
 {
-  "disease" : "Bebê Chorando",
-    "red": [
-      "Obstrução das vias áreas",
-      "Respiração inadequada",
-      "Choque",
-      "Não reativo"
-    ],
-    "orange": [
-      "Sinais de dor intensa",
-      "Resposta à voz ou à dor apenas",
-      "Prostração, hipotonia",
-      "Púrpura",
-      "Erupção cutânea fixa",
-      "Criança quente"
-    ],
-    "yellow": [
-      "Sinais de dor moderada",
-      "História de inscociência",
-      "História discordante",
-       "Incosolável pelos pais",
-       "Choro prologado ou ininterrupto",
-       "Incapaz de se alimentar"
-    ],
-    "green": [
-      "Sinais de dor recente",
-      "Febril",
-      "Comportamento atípico",
-      "Evento recente"
-    ]
+  "explication": {
+    "Choro prolongado ou ininterrupto": "Criança que tem chorado continuamente por 2 horas ou mais.",
+    "Comportamento atípico": "Criança com comportamento não habitual em dada situação. Os cuidadores darão espontaneamente esta informação. São crianças ditas irritadiças ou esquisitas.",
+    "Erupção cutânea fixa": "Erupção que não se empalidece (se torna branca) quando pressão é aplicada sobre ela. Geralmente é testada usando-se um copo para pressionar a lesão. Observa-se a alteração da coloração através do fundo do copo.",
+    "História discordante": "Quando a história fornecida não explica os achados físicos. Pode ser um marcador de lesão não acidental em crianças ou adultos vulneráveis, podendo ser sentinela de abuso e maus tratos.",
+    "História de insconsciência": "Deve haver uma testemunha confiável para relatar se o paciente perdeu a consciência e por quanto tempo. Caso contrário, se o paciente não se lembra do incidente, deve-se presumir que esteve inconsciente.",
+    "Incapaz de se alimentar": "Isto é geralmente relatado pelos pais. Criança que não ingere adequadamente sólido ou líquido via oral.",
+    "Incosolável pelos país": "Criança cujo choro ou angústia não respondem às tentativas de acalanto dos pais.",
+    "Prostração, hipotonia": "Pais descrevem a criança como 'molinha'. O tônus geralmente está diminuído-o sinal mais característico é a cabeça caída.",
+    "Púrpura": "Erupção de qualquer parte do corpo que é causada por pequenas hemorragias de baixo da pele. Uma erupção purpúrica não se empalidece quando pressão é aplicada sobre ela.",
+    "Sinais de dor intensa": "Crianças pequenas e bebês com dor intensa não conseguem se queixar. Eles vão berrar de forma contínua e inconsolável e estarão taquicardicos. Podem também apresentar sinais como palidez e sudorese.",
+    "Sinais de dor moderada": "Crianças pequenas e bebês com dor moderada não conseguem se queixar. Eles geralmente choram intermitente e são ocasionalmente consoláveis."
+  },
+  "disease": "Bebê Chorando",
+  "red": [
+    "Obstrução das vias áreas",
+    "Respiração inadequada",
+    "Choque",
+    "Não reativo"
+  ],
+  "orange": [
+    "Sinais de dor intensa",
+    "Resposta à voz ou à dor apenas",
+    "Prostração, hipotonia",
+    "Púrpura",
+    "Erupção cutânea fixa",
+    "Criança quente"
+  ],
+  "yellow": [
+    "Sinais de dor moderada",
+    "História de inscociência",
+    "História discordante",
+    "Incosolável pelos pais",
+    "Choro prologado ou ininterrupto",
+    "Incapaz de se alimentar"
+  ],
+  "green": [
+    "Sinais de dor recente",
+    "Febril",
+    "Comportamento atípico",
+    "Evento recente"
+  ]
 }

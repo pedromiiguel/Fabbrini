@@ -1,4 +1,10 @@
 {
+  "explication" : {
+    "Hiperglicemia": "Glicemia > 300mg/dL",
+    "Hiperglicemia com cetoce": "Glicemia > 200mg/dL com cetonemia, cetonúria ou sinais de acidose(respiração produnda)",
+    "Hipoglicemia": "Glicemia < 55mg/dL",
+    "Vômitos persistentes": "Vômitos contínuos ou que ocorre sem alívio entre os episódios."
+  },
   "disease" : "Diabetes",
     "red": [
       "Obstrução das vias áreas",

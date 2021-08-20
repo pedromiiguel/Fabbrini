@@ -1,4 +1,15 @@
 {
+  "explication": {
+    "Chieira": "Pode ser uma sibilância audivel ou só uma sensação de chiado. Obstrução mais grave de vias aéreas pode ser silenciosa (não passa nenhum ar.)",
+    "Historia respiratória significativa": "História prévia de condições respiratórias ameaçadoras da vida (p. ex. DPOC, asma lábil, uso domiciliar de O₂ ou ventilação não invasiva).",
+    "PFE baixo": "Pico de Fluxo Expiratório (PEF) 50% ou inferior ao melhor PFE previsto (ver escalas em anexo.)",
+    "PFE muito baixo": "Pico de Fluxo Expiratório (PFE) de 33% ou menos do melhor prévio ou previsto.",
+    "Pulso anormal": "Bradicardia (<60/min em adultos), taquicardia (>100/min em adultos) ou um ritmo irregular. Na criança deve-se definir bradicardia e taquicardia conforme idade.",
+    "Sat 02 baixa": "Saturação de oxigênio < 95% em ar ambiente.",
+    "Sat 02 muito baixa": "Saturação de oxigênio < 95% em terapia com O₂ ou < 90% em ar ambiente.",
+    "Sem melhora com sua medicação habitual": "Esta história deve ser contada pelo paciente. A ausência de melhora da dispnéia com o broncodilatador prescrito pelo médico clínico também é importante.",
+    "Tosse produtiva": "A infecção respiratória geralmente causa tosse com escarro frequentemente purulento (verde ou amarelo)."
+  },
   "disease" : "Asma",
     "red": [
       "Obstrução das vias áreas",

@@ -1,30 +1,30 @@
 {
-  "disease" : "Doença sexualmente transmissível",
-    "red": [
-      "Obstrução das vias áreas",
-      "Respiração ineficaz",
-      "Choque"
-    ],
-    "orange": [
-      "Alteração súbita da consciência",
-      "Erupção cutânea fixa",
-      "Púrpura",
-      "Adulto muito quente",
-      "Dor intensa"
-    ],
-    "yellow": [
-      "Dor testicular",
-      "Erupção ou vesículas disseminadas",
-      "Imunossupressão conhecida",
-      "Dor ao movimento articular",
-      "Articulação quente",
-      "Adulto quente",
-      "Dor moderada"
-    ],
-    "green": [
-      "Febril",
-      "Corrimento",
-      "Dor leve recente",
-      "Evento recente"
-    ]
+  "explication": {
+    "Corrimento": "Para doenças sexualmente transmissive is, è qualquer secreção peniana ou secreção vaginal anormal.",
+    "Dor ao movimento articular": "A dor pode ocorrer tanto na movimentação ativa (do paciente) como passiva (pelo examinador) da articulação.",
+    "Dor testicular": "Dor no testicular",
+    "Erupção cutânea fixa": "Erupção que não se empalidece (se torna branca) quando pressão é aplicada sobre ela. Geralmente é testada usando-se um copo para pressionar a lesão. Observa-se a alteração da coloração através do fundo do copo.",
+    "Erupção ou vesículas disseminadas": "Qualquer erupção secretante ou bolhosa cobrindo mais de 10% da superficie corporal",
+    "Imunossupressão conhecida": "Qualquer paciente em uso de drogas imunossupressoras (incluindo uso prolongado de corticoide) ou que seja HIV positivo.",
+    "Púrpura": "Erupção de qualquer parte do corpo que é causada por pequenas hemorragias debaixo da pele. Uma erupção purpúrica não se empalidece quando pressão é aplicada sobre ela"
+  },
+  "disease": "Doença sexualmente transmissível",
+  "red": ["Obstrução das vias áreas", "Respiração ineficaz", "Choque"],
+  "orange": [
+    "Alteração súbita da consciência",
+    "Erupção cutânea fixa",
+    "Púrpura",
+    "Adulto muito quente",
+    "Dor intensa"
+  ],
+  "yellow": [
+    "Dor testicular",
+    "Erupção ou vesículas disseminadas",
+    "Imunossupressão conhecida",
+    "Dor ao movimento articular",
+    "Articulação quente",
+    "Adulto quente",
+    "Dor moderada"
+  ],
+  "green": ["Febril", "Corrimento", "Dor leve recente", "Evento recente"]
 }

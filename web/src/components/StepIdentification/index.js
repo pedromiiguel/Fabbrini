@@ -91,6 +91,7 @@ function TelephoneMaskCustom(props) {
         /\d/,
         /\d/,
         /\d/,
+        /\d/,
         '-',
         /\d/,
         /\d/,
@@ -145,10 +146,8 @@ const validationSchema = yup.object().shape({
       'CPF inválido'
     ),
   telephone: yup.string().required('Telefone é obrigatório'),
-  birthDate: yup
-    .string('Data de nascimento inválida')
-    .required('Data de nascimento é obrigatório'),
-  sex: yup.string().required('Sexo é obrigatório'),
+  birthDate: yup.string('Data de nascimento inválida'),
+  sex: yup.string(),
 });
 
 function StepIdentification() {
@@ -161,18 +160,19 @@ function StepIdentification() {
     resolver: yupResolver(validationSchema),
   });
 
-  const { handleNext } = useContext(SymptonContext);
+  const { handleNext, removeData, setUser } = useContext(SymptonContext);
 
   function onSubmit(data) {
-    console.log(data);
+    setUser(data);
 
     api
       .post('/user/register', data)
       .then(() => {
-        console.log('ok')
+        console.log('ok');
       })
       .catch((err) => alert(err));
 
+    removeData();
     handleNext();
   }
 

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, Button, Typography } from '@material-ui/core';
+import { Box, Button, Typography, Popover, Link } from '@material-ui/core';
 import api from '../../services/api';
 import { SymptonContext } from '../../context/SymptonContext';
 import SymptomDiscriminators from '../SymptomDiscriminators';
@@ -10,7 +10,6 @@ const useStyles = makeStyles((theme) => ({
   instructions: {
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(3),
-    paddingLeft: '26px',
   },
   inputField: {
     display: 'flex',
@@ -52,12 +51,50 @@ const useStyles = makeStyles((theme) => ({
   buttons: {
     padding: '16px 32px',
   },
+  header: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    padding: '0 24px',
+    alignItems: 'center',
+  },
+  infoButton: {
+    background: 'transparent',
+    cursor: 'pointer',
+    fontSize: '24px',
+    textDecoration: 'none',
+  },
+  popover: {
+    padding: '24px',
+  },
+  key: {
+    color: '#2196F3',
+    fontWeight: 'bold',
+    fontSize: '16px',
+    padding: '8px 0',
+  },
+  value: {
+    fontSize: '14px',
+    padding: '8px 0',
+  },
 }));
 
 function StepIdentification() {
   const history = useHistory();
   const classes = useStyles();
   const [activeColor, setActiveColor] = useState(0);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const { explication, localData } = useContext(SymptonContext);
+  const exlicationArray = Object.entries(explication);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
   const {
     setActiveStep,
     disease,
@@ -113,13 +150,13 @@ function StepIdentification() {
   function handleSubmit(event) {
     event.preventDefault();
     const result = Object.values(specification);
-
+    console.log(localData);
     const data = {
       ...symptom,
       color: color,
       query: false,
       discriminators: specification,
-      user_id: '611862cf21fdc01b4819b7a5',
+      user_id: localData._id,
     };
 
     const discriminatorTrue = result.includes('true');
@@ -162,9 +199,44 @@ function StepIdentification() {
   }
   return (
     <Box>
-      <Typography className={classes.instructions}>
-        Forneça as informações abaixo de acordo com o que está sentindo.
-      </Typography>
+      <Box className={classes.header}>
+        <Typography className={classes.instructions}>
+          Forneça as informações abaixo de acordo com o que está sentindo.
+        </Typography>
+
+        <Link
+          title="Clique para obter mais informações sobre os sintomas"
+          aria-describedby={id}
+          className={classes.infoButton}
+          onClick={handleClick}
+        >
+          ?
+        </Link>
+        <Popover
+          id={id}
+          open={open}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'center',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'center',
+          }}
+        >
+          <Typography className={classes.popover}>
+            {exlicationArray.map((value, index) => (
+              <p>
+                <span className={classes.key}>{value[0]}</span> :{' '}
+                <span className={classes.value}>{value[1]}</span>
+              </p>
+            ))}
+          </Typography>
+        </Popover>
+      </Box>
+
       <form
         id="formHealth"
         noValidate
