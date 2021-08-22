@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   TextField,
   Typography,
@@ -22,7 +22,7 @@ import { SymptonContext } from '../../context/SymptonContext';
 import { useForm, Controller } from 'react-hook-form';
 import MaskedInput from 'react-text-mask';
 import ptLocale from 'date-fns/locale/pt';
-
+import { cpf } from 'cpf-cnpj-validator';
 const useStyles = makeStyles((theme) => ({
   instructions: {
     marginTop: theme.spacing(3),
@@ -151,18 +151,23 @@ function CPFMaskCustom(props) {
 const validationSchema = yup.object().shape({
   name: yup
     .string()
+    .matches(/[a-zA-Z]/, 'O campo nome não pode ter números')
     .required('Nome é obrigatório')
-    .min(5, 'O campo nome deve ter mais de 5 caracteres')
+    .min(10, 'O campo nome deve ter mais de 10 caracteres')
+
     .max(100, 'O campo nome deve ter menos de 100 caracteres'),
   cpf: yup
     .string()
     .required('CPF é obrigatório')
     .matches(
-      /([0-9]{2}[.]?[0-9]{3}[.]?[0-9]{3}[/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{2})/,
+      /([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/,
       'CPF inválido'
     ),
   telephone: yup.string().required('Telefone é obrigatório'),
-  birthDate: yup.string('Data de nascimento inválida'),
+  birthDate: yup
+    .date()
+    .min(new Date('1930-01-01'), 'Data inválida')
+    .max(new Date('2009-01-01'), 'Data inválida'),
   sex: yup.string(),
 });
 
@@ -171,25 +176,34 @@ function StepIdentification() {
     control,
     register,
     handleSubmit,
+    setError,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(validationSchema),
   });
 
   const { handleNext, removeData, setUser } = useContext(SymptonContext);
-
+  const [maxDateMessage, setmaxDateMessage] = useState('Teste');
   function onSubmit(data) {
-    setUser(data);
+    console.log();
+    if (cpf.isValid(data.cpf) === false) {
+      setError('cpf', {
+        type: 'manual',
+        message: 'Digite um CPF válido',
+      });
+    } else {
+      setUser(data);
 
-    api
-      .post('/user/register', data)
-      .then(() => {
-        console.log('ok');
-      })
-      .catch((err) => alert(err));
+      api
+        .post('/user/register', data)
+        .then(() => {
+          console.log('ok');
+        })
+        .catch((err) => alert(err));
 
-    removeData();
-    handleNext();
+      removeData();
+      handleNext();
+    }
   }
 
   const classes = useStyles();
@@ -213,7 +227,7 @@ function StepIdentification() {
       >
         <div className={classes.inputField}>
           <TextField
-            label="Nome"
+            label="Nome Completo"
             type="text"
             variant="outlined"
             id="name"
@@ -253,7 +267,10 @@ function StepIdentification() {
                 <KeyboardDatePicker
                   {...field}
                   inputVariant="outlined"
+                  allowKeyboardControl
                   disableFuture
+                  maxDate={new Date('2009-01-01')}
+                  minDate={new Date('1931-01-01')}
                   format="dd/MM/yyyy"
                   openTo="year"
                   views={['year', 'month', 'date']}
