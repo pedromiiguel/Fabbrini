@@ -6,7 +6,7 @@ import Menu from '../../components/Menu';
 
 function Fabbrini() {
   return (
-    <div className="container">
+    <div className="home-container">
       <Menu />
       <main>
         <div className="content">
@@ -17,7 +17,7 @@ function Fabbrini() {
 
           <div className="description">
             <p>
-              Está se sentido mal? Faça sua autotriagem no botão abaixo, receba uma orientação e consulte com um de nossos médicos.
+              Estar se sentido mal? Faça sua autotriagem no botão abaixo, receba uma orientação e consulte com um de nossos médicos.
             </p>
           </div>
 
@@ -26,7 +26,7 @@ function Fabbrini() {
         <div className="image-container">
           <img src={medicine} alt="" />
           <small>
-            Obs: Este sistema não substitui uma avaliação de um médico.
+             Este sistema não substitui uma avaliação de um médico.
           </small>
         </div>
       </main>
