@@ -38,6 +38,14 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     gap: '30px',
     padding: '32px',
+    '@media (max-width: 900px)': {
+      width: '100%',
+      gridTemplateColumns: '1fr 1fr',
+    },
+    '@media (max-width: 500px)': {
+      gridTemplateColumns: '1fr',
+      width: '100%',
+    },
   },
   link: {
     textDecoration: 'none',
@@ -47,16 +55,24 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '300px',
     writingMode: 'horizontal-tb',
-    // backgroundColor: 'yellow',
+    '@media (max-width: 500px)': {
+      height: '500px',
+      backgroundColor: 'white',
+    },
   },
   buttonsContainer: {
     display: 'flex',
     justifyContent: 'flex-end',
     width: '100%',
     height: '100%',
+
     // backgroundColor: 'blue',
     borderTop: '1px solid #E0E0E0',
     marginTop: '20px',
+    '@media (max-width: 500px)': {
+      marginTop: '0px',
+      backgroundColor: 'white',
+    },
   },
   buttons: {
     padding: '32px 32px',

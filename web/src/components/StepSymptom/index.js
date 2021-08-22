@@ -51,6 +51,9 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     borderTop: '1px solid #E0E0E0',
     margin: 'auto 0',
+    '@media (max-width: 500px)': {
+      backgroundColor: 'white',
+    },
   },
   buttons: {
     padding: '24px 32px',

@@ -16,6 +16,16 @@ const useStyles = makeStyles((theme) => ({
   container: {
     overflowY: 'auto',
     height: '280px',
+    '&::-webkit-scrollbar': {
+      width: '8px',
+      height: '8px',
+
+    },
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: '#2D9CDB',
+      borderRadius: '15px'
+    }
+  
   },
   formControl: {
     width: '600px',
@@ -25,6 +35,10 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
     gap: '10px',
     paddingLeft: '26px',
+    '@media (max-width: 500px)': {
+      width: '500px',
+
+    },
   },
 }));
 

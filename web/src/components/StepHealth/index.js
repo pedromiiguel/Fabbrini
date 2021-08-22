@@ -40,13 +40,16 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
     gap: '10px',
     paddingLeft: '26px',
+  
   },
   buttonsContainer: {
     display: 'flex',
     justifyContent: 'flex-end',
     width: '100%',
     borderTop: '1px solid #E0E0E0',
-    // backgroundColor: 'blue',
+    '@media (max-width: 500px)': {
+      backgroundColor: 'white',
+    },
   },
   buttons: {
     padding: '16px 32px',
@@ -201,7 +204,8 @@ function StepIdentification() {
     <Box>
       <Box className={classes.header}>
         <Typography className={classes.instructions}>
-          De acordo com as informações abaixo marque "Sim",  caso você esteja sentindo algum desse sintomas.
+          De acordo com as informações abaixo marque "Sim", caso você esteja
+          sentindo algum desse sintomas.
         </Typography>
 
         <Link

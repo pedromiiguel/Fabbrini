@@ -52,3 +52,9 @@ nav {
   border-radius: 3px;
   margin-left: 30px;
 }
+
+@media (max-width: 900px) {
+  .menu-items {
+   display: none;
+  }
+}
