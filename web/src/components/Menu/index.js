@@ -29,7 +29,7 @@ function Menu(){
         
         <div className="menu-items">
           <ul>
-            <li><Link to="/autotriagem">Sobre</Link></li> 
+            <li><Link to="/">Sobre</Link></li> 
             <li><Link to="/">Contato</Link></li>
             <li><Link to="/">Ajuda</Link></li>
             <span>|</span>

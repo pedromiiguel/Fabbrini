@@ -1,122 +1,105 @@
-.overlay {
+.container {
   width: 100vw;
   height: 100vh;
-  background: rgba(242, 243, 245, 0.8);
+  background-color: #f2f2f2;
+}
 
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+.screening-container {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+.screening-container .progress {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.screening-content {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
-
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-
-  z-index: 20;
+  background-color: #fff;
+  min-width: 600px;
 }
 
-.container-modal {
-  /* display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column; */
-
-  width: 526px;
-  height: 600px;
-
-  background: #fff;
-
-  border-radius: 5px;
-}
-
-.container-modal header {
+.screening-content header {
   width: 100%;
   background: #2d9cdb;
-  padding: 10px 0px 10px 33px;
+  padding: 8px;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.24);
-  /* z-index: 10; */
+  text-align: center;
+  color: #fff;
   border-radius: 5px 5px 0px 0px;
 }
-
-.container-modal header h1 {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 32px;
-  line-height: 42px;
-
-  color: #ffffff;
+.screening-image img {
+  width: 600px;
+  height: 600px;
 }
 
-.container-modal p {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 21px;
-
-  color: #878686;
+.screening-space {
+  width: 100%;
+  height: 100%;
+  padding: 32px 24px;
 }
 
-.container-modal .description {
-  margin: 30px 0px 0px 42px;
+.screening-space h4 {
+  text-align: center;
 }
 
-.state p {
-  margin: 30px 0px 0px 42px;
-}
-
-.chip-container {
+.screening-space .screening-state {
+  width: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: 85%;
-  gap: 60px;
-  margin: 30px auto;
-}
-
-.queueContainer{
-  display: flex;
   justify-content: space-between;
+  margin: 0 auto;
+  padding: 24px 0;
+}
+
+.screening-state .chip {
+  text-align: center;
+  display: flex;
   align-items: center;
-  width: 85%;
-  margin-top: 24px;
-}
-
-.position {
-  margin: 30px 0px 0px 42px;
-}
-
-.position p {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 21px;
-
-}
-
-.recommendation {
-  width: 443px;
-  height: 200px;
-
-  background: #fff;
-  margin: 40px auto;
-
-  /* display: flex;
   justify-content: center;
-  align-items: center; */
-  box-shadow: 0px 15px 12px rgba(0, 0, 0, 0.22),
-    0px 19px 38px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-weight: 500;
+  width: 220px;
+  height: 45px;
+  border-radius: 70px;
+}
+
+.screening-space .screening-queue {
+  width: 100%;
+}
+
+.screening-queue .queueContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0;
+}
+
+.queueContainer div {
+  padding: 24px;
+}
+
+.screening-space .screening-data {
+  width: 100%;
+  padding: 24px 0;
+}
+.screening-data p {
+  padding: 0 0 24px 0;
 }
 
 .recommendation-content {
-  padding: 30px 20px 0px 20px;
+  width: 100%;
+  height: 100%;
 }
 .recommendation-content h3 {
   font-family: Roboto;
@@ -130,21 +113,19 @@
 }
 
 .recommendation-content p {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 21px;
+  opacity: 0.6;
+  padding: 16px 0;
 }
 
-.buttons-container {
+.recommendation-content .buttons-container {
+  width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  gap: 20px;
+
 }
 
-.chip {
+/* .chip {
   text-align: center;
   display: flex;
   align-items: center;
@@ -156,8 +137,35 @@
   border-radius: 70px;
 }
 
-.buttons-container a {
-  text-decoration: none;
-  color: #d32f2f;
-  font-weight: bold;
+
+
+
+
+
+
+.screening-content div {
+  padding: 24px;
 }
+
+.screening-description {
+  text-align: center;
+}
+
+.screening-state {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.queueContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.screening-data button {
+  margin: 24px;
+} */

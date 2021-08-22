@@ -4,9 +4,7 @@ import { Link } from 'react-router-dom';
 import medicine from '../../assets/images/undraw_medicine.svg';
 import Menu from '../../components/Menu';
 
-
 function Fabbrini() {
-  // const classes = useStyles();
   return (
     <div className="container">
       <Menu />
@@ -16,17 +14,21 @@ function Fabbrini() {
           <div className="subtitle">
             <p>Sua saúde não deve ter obstáculos!</p>
           </div>
-         
+
           <div className="description">
             <p>
-              Falar um pouco sobre o Fabbrini como um todo e oferecer a opção de
-              efetuar uma autotriagem de emergência clicando no botão abaixo.
+              Está se sentido mal? Faça sua autotriagem no botão abaixo, receba uma orientação e consulte com um de nossos médicos.
             </p>
           </div>
 
           <Link to="/autotriagem">Urgência</Link>
         </div>
-        <img src={medicine} alt="" />
+        <div className="image-container">
+          <img src={medicine} alt="" />
+          <small>
+            Obs: Este sistema não substitui uma avaliação de um médico.
+          </small>
+        </div>
       </main>
     </div>
   );

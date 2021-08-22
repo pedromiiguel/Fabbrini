@@ -1,14 +1,13 @@
 nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; 
   align-items: center;
-  width: 100vw;
+  width: 100%;
   padding: 20px 50px;
   background-color: #fff;
-  box-sizing: border-box;
 }
 
-.menu-items {
+ .menu-items {
   width: 600px;
   display: flex;
   justify-content: space-between;
@@ -41,8 +40,8 @@ nav {
 
 .menu-items ul span {
   padding: 0 20px;
-}
-/* 
+} 
+
 .menu-items button {
   border: none;
   text-transform: uppercase;
@@ -52,4 +51,4 @@ nav {
   background-color: #2d9cdb;
   border-radius: 3px;
   margin-left: 30px;
-} */
+}

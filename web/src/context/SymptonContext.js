@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useState } from 'react';
 import asma from '../json/asma.json';
 import agressao from '../json/agressao.json';
 import bebeChorando from '../json/bebe_chorando.json';
@@ -16,12 +16,10 @@ export default function SymptonContextProvider({ children }) {
   const [synmtomQuestions, setSynmtomQuestions] = useState({});
   const [disease, setDisease] = useState('');
   const [user, setUser] = useState();
-  const [localData, setlocalData] = useState();
   const [open, setOpen] = useState(false);
   const [symptom, setSymptom] = useState({});
   const [specification, setSpecification] = useState({});
   const [color, setColor] = useState('');
-  const [loading, setLoading] = useState(false);
   const diseaseArray = [
     asma,
     agressao,
@@ -31,12 +29,6 @@ export default function SymptonContextProvider({ children }) {
     doenca_sexual,
     dor_garganta,
   ];
-
-  useEffect(() => {
-    const storageUser = localStorage.getItem('@RNAuth:user_id');
-    setlocalData(JSON.parse(storageUser));
-    setLoading(false);
-  }, [loading]);
 
   const handleOpen = () => {
     setOpen(true);
@@ -61,11 +53,9 @@ export default function SymptonContextProvider({ children }) {
 
   function setData(data) {
     localStorage.setItem('@RNAuth:user_id', JSON.stringify(data));
-    setLoading(true);
   }
 
   function removeData() {
-    setLoading(true);
     localStorage.removeItem('@RNAuth:user_id');
   }
 
@@ -113,7 +103,6 @@ export default function SymptonContextProvider({ children }) {
         user,
         setData,
         removeData,
-        localData,
       }}
     >
       {children}

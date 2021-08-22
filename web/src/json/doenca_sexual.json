@@ -9,7 +9,7 @@
     "Púrpura": "Erupção de qualquer parte do corpo que é causada por pequenas hemorragias debaixo da pele. Uma erupção purpúrica não se empalidece quando pressão é aplicada sobre ela"
   },
   "disease": "Doença sexualmente transmissível",
-  "red": ["Obstrução das vias áreas", "Respiração ineficaz", "Choque"],
+  "red": ["Obstrução das vias áereas", "Respiração ineficaz", "Choque"],
   "orange": [
     "Alteração súbita da consciência",
     "Erupção cutânea fixa",

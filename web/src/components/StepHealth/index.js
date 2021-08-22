@@ -201,7 +201,7 @@ function StepIdentification() {
     <Box>
       <Box className={classes.header}>
         <Typography className={classes.instructions}>
-          Forneça as informações abaixo de acordo com o que está sentindo.
+          De acordo com as informações abaixo marque "Sim",  caso você esteja sentindo algum desse sintomas.
         </Typography>
 
         <Link
