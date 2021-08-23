@@ -214,8 +214,8 @@ function StepIdentification() {
         })
         .catch((err) => alert(err));
 
-      // removeData();
-      // handleNext();
+      removeData();
+      handleNext();
     }
   }
 
