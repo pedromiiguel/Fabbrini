@@ -40,7 +40,7 @@ Diante a ideia proposta, analisamos e aceitamos o desafio acerca de desenvolver 
 Dessa forma,  com um time de pessoas interessadas na construção desse projeto, o Fabbrini - Aplicação web para Autotriagem, surge para complementar parte desse software de teleconsultas, trazendo uma funcionalidade a mais, propondo aos usuários uma rápida e objetiva autotriagem que, de forma simples, trata-se de um autodiagnostico confiável através de uma interface web simples e intuitiva.
 
 
-## :technologist: Canva 
+## :technologist: Canvas do projeto 
 
 - [Link da apresentação](https://1drv.ms/p/s!AiLO7DRxBOpkgwHVOPmMYRCox-GG?e=xXyTb4)
 
