@@ -202,8 +202,8 @@ function StepIdentification() {
       });
     }
     if (
-      cpf.isValid(data.cpf) === false &&
-      validator(data.telephone) === false
+      cpf.isValid(data.cpf) === true &&
+      validator(data.telephone) === true
     ) {
       setUser(data);
 
@@ -214,8 +214,8 @@ function StepIdentification() {
         })
         .catch((err) => alert(err));
 
-      removeData();
-      handleNext();
+      // removeData();
+      // handleNext();
     }
   }
 
