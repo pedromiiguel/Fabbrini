@@ -1,4 +1,5 @@
-import React, { useContext, useState } from 'react';
+/* eslint-disable */
+import React, { useContext } from 'react';
 import {
   TextField,
   Typography,
@@ -23,6 +24,7 @@ import { useForm, Controller } from 'react-hook-form';
 import MaskedInput from 'react-text-mask';
 import ptLocale from 'date-fns/locale/pt';
 import { cpf } from 'cpf-cnpj-validator';
+import validator from 'validar-telefone';
 const useStyles = makeStyles((theme) => ({
   instructions: {
     marginTop: theme.spacing(3),
@@ -151,6 +153,7 @@ function CPFMaskCustom(props) {
 const validationSchema = yup.object().shape({
   name: yup
     .string()
+    //eslint-disable-next-line
     .matches(/[a-zA-Z]/, 'O campo nome não pode ter números')
     .required('Nome é obrigatório')
     .min(10, 'O campo nome deve ter mais de 10 caracteres')
@@ -183,15 +186,25 @@ function StepIdentification() {
   });
 
   const { handleNext, removeData, setUser } = useContext(SymptonContext);
-  const [maxDateMessage, setmaxDateMessage] = useState('Teste');
+
   function onSubmit(data) {
-    console.log();
     if (cpf.isValid(data.cpf) === false) {
       setError('cpf', {
         type: 'manual',
         message: 'Digite um CPF válido',
       });
-    } else {
+    }
+
+    if (validator(data.telephone) === false) {
+      setError('telephone', {
+        type: 'manual',
+        message: 'Digite um telefone válido',
+      });
+    }
+    if (
+      cpf.isValid(data.cpf) === false &&
+      validator(data.telephone) === false
+    ) {
       setUser(data);
 
       api
