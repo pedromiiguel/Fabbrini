@@ -104,10 +104,10 @@ Esse projeto está sob a licença MIT.
 
 #### Pedro Miguel
 
-- Git Hub: <a href="https://github.com/pedromiiguel" target='_blanck' >@pedromiiguel</a>
-- Linkedin: <a href="https://www.linkedin.com/in/pedro-miiguel" target='_blanck' >@pedromiiguel</a>
+- Git Hub: <a href="https://github.com/pedromiiguel" target='_blank' >@pedromiiguel</a>
+- Linkedin: <a href="https://www.linkedin.com/in/pedro-miiguel" target='_blank' >@pedromiiguel</a>
 
-#### Pedro Miguel
+#### Matheus Kaúlly
 
-- Git Hub: <a href="https://github.com/pedromiiguel" target='_blanck' >@matheuskaully</a>
-- Linkedin: <a href="https://www.linkedin.com/in/pedro-miiguel" target='_blanck' >@matheuskaully</a>
+- Git Hub: <a href="https://github.com/pedromiiguel" target='_blank' >@matheuskaully</a>
+- Linkedin: <a href="https://www.linkedin.com/in/matheuskaully/" target='_blank' >@matheuskaully</a>
